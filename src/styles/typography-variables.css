@@ -1,0 +1,135 @@
+:root {
+  --font-zh: 'LXGW WenKai Mono TC', serif;
+  --font-en: 'Cormorant Garamond', serif;
+
+  --color-primary: #314D61;
+  --color-light: #FFFFFF;
+  --color-accent: #FF6F19;
+  --color-text: #1E1E1E;
+
+  --line-title: 150%;
+  --line-body: 170%;
+  --letter-spacing: 6%;
+}
+
+.zh-title-1 {
+  font-family: var(--font-zh);
+  font-size: 55px;
+  line-height: var(--line-title);
+  letter-spacing: var(--letter-spacing);
+  font-weight: bold;
+}
+
+.zh-title-2 {
+  font-family: var(--font-zh);
+  font-size: 40px;
+  line-height: var(--line-title);
+  letter-spacing: var(--letter-spacing);
+  font-weight: bold;
+}
+
+.zh-title-3 {
+  font-family: var(--font-zh);
+  font-size: 32px;
+  line-height: var(--line-title);
+  letter-spacing: var(--letter-spacing);
+  font-weight: bold;
+}
+
+.zh-title-4 {
+  font-family: var(--font-zh);
+  font-size: 18px;
+  line-height: var(--line-title);
+  letter-spacing: var(--letter-spacing);
+  font-weight: bold;
+}
+
+.en-title-1 {
+  font-family: var(--font-en);
+  font-size: 200px;
+  line-height: var(--line-title);
+  font-weight: bold;
+}
+
+.en-title-2 {
+  font-family: var(--font-en);
+  font-size: 150px;
+  line-height: var(--line-title);
+  font-weight: bold;
+}
+
+.en-title-3 {
+  font-family: var(--font-en);
+  font-size: 130px;
+  line-height: var(--line-title);
+  font-weight: bold;
+}
+
+.en-title-4 {
+  font-family: var(--font-en);
+  font-size: 60px;
+  line-height: var(--line-title);
+  font-weight: bold;
+}
+
+.en-title-5 {
+  font-family: var(--font-en);
+  font-size: 40px;
+  line-height: var(--line-title);
+  font-weight: bold;
+}
+
+.en-title-6 {
+  font-family: var(--font-en);
+  font-size: 25px;
+  line-height: var(--line-title);
+  font-weight: bold;
+}
+
+.zh-body-1 {
+  font-family: var(--font-zh);
+  font-size: 24px;
+  line-height: var(--line-body);
+  letter-spacing: var(--letter-spacing);
+  font-weight: normal;
+}
+
+.zh-body-2 {
+  font-family: var(--font-zh);
+  font-size: 18px;
+  line-height: var(--line-body);
+  letter-spacing: var(--letter-spacing);
+  font-weight: normal;
+}
+
+.zh-body-3 {
+  font-family: var(--font-zh);
+  font-size: 16px;
+  line-height: var(--line-title);
+  letter-spacing: var(--letter-spacing);
+  font-weight: normal;
+}
+
+.zh-body-4 {
+  font-family: var(--font-zh);
+  font-size: 14px;
+  line-height: var(--line-title);
+  letter-spacing: var(--letter-spacing);
+  font-weight: normal;
+}
+
+.button-1 {
+  font-family: var(--font-zh);
+  font-size: 18px;
+  line-height: var(--line-title);
+  letter-spacing: var(--letter-spacing);
+  font-weight: bold;
+}
+
+.button-2 {
+  font-family: var(--font-zh);
+  font-size: 16px;
+  line-height: var(--line-title);
+  letter-spacing: var(--letter-spacing);
+  font-weight: bold;
+}
