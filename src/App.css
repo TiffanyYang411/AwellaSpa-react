@@ -40,3 +40,7 @@
 .read-the-docs {
   color: #888;
 }
+
+main {
+  padding-top: 100px; /* ⬅️ 加在最後，避免 Navbar 擋住內容 */
+}

@@ -12,7 +12,19 @@
   --letter-spacing: 6%;
 }
 
-.zh-title-1 {
+.font-en {
+  font-family: var(--font-en);
+  line-height: var(--line-title);
+  font-weight: bold;
+}
+
+.font-zh {
+  font-family: var(--font-zh);
+  line-height: var(--line-title);
+  font-weight: bold;
+}
+
+/* .zh-title-1 {
   font-family: var(--font-zh);
   font-size: 55px;
   line-height: var(--line-title);
@@ -132,4 +144,4 @@
   line-height: var(--line-title);
   letter-spacing: var(--letter-spacing);
   font-weight: bold;
-}
+} */
