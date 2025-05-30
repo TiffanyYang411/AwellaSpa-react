@@ -93,13 +93,13 @@
   animation-play-state: running;
 }
 
-.delay-1 { animation-delay: 0s; }
-.delay-2 { animation-delay: 0.4s; }
-.delay-3 { animation-delay: 0.8s; }
-.delay-4 { animation-delay: 1.2s; }
-.delay-5 { animation-delay: 1.5s; }
-.delay-6 { animation-delay: 1.8s; }
-.delay-7 { animation-delay: 2.1s; }
+.delay-1 { animation-delay: 0.4s; }
+.delay-2 { animation-delay: 0.7s; }
+.delay-3 { animation-delay: 0.9s; }
+.delay-4 { animation-delay: 1.0s; }
+.delay-5 { animation-delay: 1.1s; }
+.delay-6 { animation-delay: 1.2s; }
+.delay-7 { animation-delay: 1.3s; }
 
 @keyframes fadeInLine {
   to {

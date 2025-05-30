@@ -13,7 +13,7 @@
     font-family: var(--font-zh);
     justify-content: center;
     /* 保證中間對稱 */
-    gap: 60px;
+    gap: 40px;
     /* 左右分區彼此間距 */
     text-shadow:
         0 2px 4px rgba(0, 0, 0, 0.25),
