@@ -1,114 +1,211 @@
 .service-menu-section {
-  width: 100%;
-  height: 100vh;
-  padding: 170px 60px 80px; /* ✅ 上方空出更多距離 */
-  background-image: url('/AwellaSpa-react/images/service-bg.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-  position: relative;
+    width: 100%;
+    height: 100vh;
+    padding: 170px 60px 80px;
+    /* ✅ 上方空出更多距離 */
+    background-image: url('/AwellaSpa-react/images/service-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    position: relative;
 }
 
 .service-title {
-  font-size: 40px;
-  font-weight: Regular;
-  margin-bottom: 30px;
-  font-family: var(--font-en);
-  color: var(--color-text);
-  z-index: 2;
+    font-size: 40px;
+    font-weight: 500;
+    /* ✅ 原本如果是 bold 可改為 600 或 500 */
+    margin-bottom: 30px;
+    font-family: var(--font-en);
+    color: var(--color-text);
+    z-index: 2;
+
+    animation: fadeUp 1s ease-out;
+    animation-delay: 0.3s;
+    animation-fill-mode: both;
 }
 
 .service-card-wrapper {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  flex-wrap: wrap;
-  z-index: 2;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    z-index: 2;
 }
 
 .service-card {
-  width: 655px;
-  height: 655px;
-  border-radius: 10px;
-  padding: 36px 28px;
-  text-align: left;
+    width: 655px;
+    height: 655px;
+    border-radius: 16px;
+    padding: 36px 28px;
+    text-align: left;
 
-  background: rgba(255, 255, 255, 0.1); /* 白色10% */
-  backdrop-filter: blur(13px);
-  -webkit-backdrop-filter: blur(40px); /* Safari 支援 */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
 
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+    box-shadow:
+        inset 0 0 10px rgba(255, 255, 255, 0.2),
+        0 6px 30px rgba(0, 0, 0, 0.2);
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .service-card:hover {
-  transform: translateY(-6px);
+    transform: translateY(-6px);
 }
 
 .service-card h3 {
-  font-size: 32px;
-  font-weight: bold;
-  margin-bottom: 8px;
-  color: var(--color-text);
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: var(--color-text);
+    font-weight: 500;
+    /* ✅ 原本如果是 bold 可改為 600 或 500 */
 }
 
 .sub-title {
-  font-size: 22px;
-  color: var(--color-text);
-  margin-bottom: 16px;
+    font-size: 22px;
+    color: var(--color-text);
+    margin-bottom: 16px;
 }
 
 .description {
-  font-size: 18px;
-  color: #333;
-  margin-bottom: 20px;
-  line-height: 1.8;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--color-text);
+    margin-bottom: 20px;
+    line-height: 1.8;
+    font-family: var(--font-zh);
 }
 
 .service-card img {
-  width: 100%;
-  border-radius: 12px;
-  margin-bottom: 20px;
+    width: 100%;
+    height: 300px;
+    /* ✅ 固定高度，兩張圖統一 */
+    object-fit: cover;
+    /* ✅ 自動裁切維持填滿 */
+    border-radius: 12px;
+    margin-bottom: 20px;
 }
 
 .service-btn {
-  background: #ff6f19;
-  color: white;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 30px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background 0.3s;
+    display: inline-block;
+    padding: 16px 40px;
+    font-size: 18px;
+    color: #314D61;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 99px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.3), 0 4px 12px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-self: flex-start;
+    /* ✅ 預設靠左 */
+    align-self: center;
+    font-family: var(--font-zh)
 }
 
+
 .service-btn:hover {
-  background: #e85d00;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.1));
+    box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.4), 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+/* === 滑入動畫效果 === */
+/* === 初始狀態：旋轉並隱藏 === */
+/* === 共用卡片初始樣式 === */
+.slide-card {
+    opacity: 0;
+    transform-style: preserve-3d;
+    transition: transform 1s ease, opacity 1s ease;
+}
+
+/* 初始翻開角度 + delay */
+.slide-left {
+    transform: rotateY(-90deg);
+    transition-delay: 0.1s;
+}
+
+.slide-right {
+    transform: rotateY(90deg);
+    transition-delay: 0.4s;
+}
+
+/* 滾入時的動畫 */
+.slide-in {
+    opacity: 1;
+    transform: rotateY(0deg);
+    transition-delay: 0s !important;
+}
+
+/* 滾出時翻回角度 */
+.slide-out-left {
+    opacity: 0;
+    transform: rotateY(-90deg);
+}
+
+.slide-out-right {
+    opacity: 0;
+    transform: rotateY(90deg);
+}
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.title-in {
+  animation: fadeUp 1s ease-out forwards;
+}
+
+@keyframes fadeDown {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+}
+
+.title-out {
+  animation: fadeDown 0.8s ease-in forwards;
 }
 
 @media (max-width: 1155px) {
-  .service-card-wrapper {
-    flex-direction: column;
-    align-items: center;
-  }
+    .service-card-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
 
-  .service-card {
-    width: 90vw;
-    height: auto; /* 高度可自動撐開 */
-    padding: 28px 24px;
-  }
+    .service-card {
+        width: 90vw;
+        height: auto;
+        /* 高度可自動撐開 */
+        padding: 28px 24px;
+    }
 
-  .service-card img {
-    height: auto;
-    max-height: 300px;
-    object-fit: cover;
-  }
+    .service-card img {
+        height: auto;
+        max-height: 250px;
+        object-fit: cover;
+    }
 }

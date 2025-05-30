@@ -1,0 +1,104 @@
+/* ScrollTreatmentIntro.css */
+.treatment-section {
+  width: 100%;
+  scroll-snap-type: y mandatory;
+}
+
+.treatment-block {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  opacity: 0;
+  transform: scale(0.96);
+  transition: all 1s ease;
+  scroll-snap-align: start;
+}
+
+.treatment-block.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.treatment-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.treatment-info {
+  position: absolute;
+  top: 25%; /* ✅ 上移一點 */
+  right: 6%; /* ✅ 改成靠右對齊 */
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 24px 32px;
+  border-radius: 16px;
+  max-width: 360px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.treatment-info h3 {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  color: #1E1E1E;
+}
+
+.treatment-info p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #1E1E1E;
+}
+
+.treatment-dot {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background-color: #fff;
+  border: 2px solid white;
+  border-radius: 50%;
+  box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.5);
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.treatment-line {
+  position: absolute;
+  width: 350px;
+  transform: rotate(-210deg); /* ✅ 產生角度感 */
+  height: 1px;
+  background: none;
+  border-top: 2px dashed rgba(255, 255, 255, 0.8);
+  z-index: 1;
+  top: 58%;
+  left: 48%;
+}
+
+/* ✅ 背部圖卡片定位 */
+.treatment-block.back .treatment-info {
+  top: 50%;
+  left: 67.2%;
+}
+
+.treatment-block.back .treatment-dot,
+.treatment-block.back .treatment-line {
+  top: 60%;
+  left: 50%;
+}
+
+/* ✅ 臉部圖卡片定位 */
+.treatment-block.face .treatment-info {
+  top: 35%;
+  left: 72.2%;
+}
+
+.treatment-block.face .treatment-dot,
+.treatment-block.face .treatment-line {
+  top: 45%;
+  left: 55%;
+}
+

@@ -1,11 +1,11 @@
 :root {
-  --font-zh: 'LXGW WenKai Mono TC', serif;
+  --font-zh: 'LXGW WenKai Mono TC', 'LXGW WenKai TC', 'Noto Sans TC', 'PingFang TC', 'Heiti TC', sans-serif;
   --font-en: 'Cormorant Garamond', serif;
 
   --color-primary: #314D61;
   --color-light: #FFFFFF;
   --color-accent: #FF6F19;
-  --color-text: #212121;;
+  --color-text: #212121;
 
   --line-title: 150%;
   --line-body: 170%;
