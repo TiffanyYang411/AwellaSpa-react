@@ -5,7 +5,8 @@
   background-position: center;
   transition: background-image 1s ease-in-out;
   position: relative;
-  overflow: hidden; /* ✅ 確保遮罩不會溢出 */
+  overflow: hidden;
+  /* ✅ 確保遮罩不會溢出 */
 }
 
 .hero-content {
@@ -16,21 +17,27 @@
   text-align: center;
   padding: 2rem;
   color: var(--color-light);
-  z-index: 2; /* ✅ 新增，讓內容在遮罩上層 */
+  z-index: 2;
+  /* ✅ 新增，讓內容在遮罩上層 */
 }
 
 .hero-title {
   font-size: 150px;
-  line-height: 1.3 !important;         /* ✅ 建議改小一點，例如 1.1 */              /* ✅ 移除上下預設 margin */
-  padding: 0;               /* ✅ 保險地移除 padding（通常沒設但保守處理） */
+  line-height: 1.3 !important;
+  /* ✅ 建議改小一點，例如 1.1 */
+  /* ✅ 移除上下預設 margin */
+  padding: 0;
+  /* ✅ 保險地移除 padding（通常沒設但保守處理） */
   font-family: var(--font-en);
   font-weight: bold;
   color: var(--color-light);
   white-space: nowrap;
-  margin: 0;             /* ✅ 中間這行不要有上下外距 */
+  margin: 0;
+  /* ✅ 中間這行不要有上下外距 */
   text-shadow:
-  0 2px 4px rgba(0, 0, 0, 0.25),
-  0 0 12px rgba(255, 255, 255, 0.2); /* 發光感 */
+    0 2px 4px rgba(0, 0, 0, 0.25),
+    0 0 12px rgba(255, 255, 255, 0.2);
+  /* 發光感 */
 }
 
 .hero-subtitle {
@@ -40,10 +47,12 @@
   font-weight: bold;
   color: var(--color-light);
   white-space: nowrap;
-  margin-bottom: 0rem; /* ✅ 上方 Welcome to 與 Awella Spa 間距 */
+  margin-bottom: 0rem;
+  /* ✅ 上方 Welcome to 與 Awella Spa 間距 */
   text-shadow:
-  0 2px 4px rgba(0, 0, 0, 0.25),
-  0 0 12px rgba(255, 255, 255, 0.2); /* 發光感 */
+    0 2px 4px rgba(0, 0, 0, 0.25),
+    0 0 12px rgba(255, 255, 255, 0.2);
+  /* 發光感 */
 }
 
 /* 遮罩層 */
@@ -53,13 +62,15 @@
   left: 0;
   width: 100%;
   height: 100%;
-    background: linear-gradient(
-    to bottom,
-    rgba(198, 218, 212, 0.3),  /* 上面淡一點 */
-    rgba(198, 218, 212, 0.1)   /* 下面重一點 */
-  );
+  background: linear-gradient(to bottom,
+      rgba(198, 218, 212, 0.3),
+      /* 上面淡一點 */
+      rgba(198, 218, 212, 0.1)
+      /* 下面重一點 */
+    );
   z-index: 1;
-  pointer-events: none; /* 不干擾點擊事件 */
+  pointer-events: none;
+  /* 不干擾點擊事件 */
 }
 
 /* Responsive Design */

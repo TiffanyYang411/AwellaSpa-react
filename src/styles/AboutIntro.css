@@ -1,0 +1,204 @@
+/* === 基本排版不動 === */
+/* AboutIntro.css */
+.about-intro-section {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 60px;
+    background-color: #dce8e5;
+    gap: 60px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.about-intro-images {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+    position: relative;
+    height: 100%;
+    padding-right: 40px;
+}
+
+.about-intro-text {
+    margin-top: 20px;
+    /* ✅ 原本是 60px，可拉大一點 */
+}
+
+.img-wrapper {
+    position: absolute;
+    opacity: 0;
+    transform: translateY(80px);
+    transition: transform 1.2s ease, opacity 1.2s ease;
+    will-change: transform, opacity;
+}
+
+.img-wrapper.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.img1-wrapper {
+    top: 3%;
+    left: 80px;
+    z-index: 1;
+    transition-delay: 0.2s;
+}
+
+.img2-wrapper {
+    top: 13%;
+    left: 300px;
+    transform: translateY(-50%);
+    transition-delay: 0.4s;
+    z-index: 2;
+}
+
+.img3-wrapper {
+    bottom: -65px;
+    left: 720px;
+    transition-delay: 0.6s;
+    z-index: 3;
+}
+
+@keyframes float1 {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-12px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes float2 {
+  0%   { transform: translateY(-8px); }
+  50%  { transform: translateY(4px); }
+  100% { transform: translateY(-8px); }
+}
+
+@keyframes float3 {
+  0%   { transform: translateY(6px); }
+  50%  { transform: translateY(-6px); }
+  100% { transform: translateY(6px); }
+}
+
+.about-img {
+  display: block;
+  backface-visibility: hidden; /* 讓動畫不造成 GPU 抽動 */
+}
+
+.img1-wrapper .about-img { animation: float1 3s ease-in-out infinite; }
+.img2-wrapper .about-img { animation: float1 6s ease-in-out infinite; }
+.img3-wrapper .about-img { animation: float1 4s ease-in-out infinite; }
+
+.img1-wrapper:hover .about-img,
+.img3-wrapper:hover .about-img {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 1));
+    animation: none;
+}
+
+.img2-wrapper:hover .about-img {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 30px rgba(255, 215, 160, 0.6));
+    animation: none;
+}
+
+.img-wrapper:hover {
+    animation: none;
+}
+
+/* Text animation */
+.fade-in-text {
+    opacity: 0;
+    transform: translateX(0px) scale(0.95);
+    transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+.fade-in-text.show {
+    opacity: 1;
+    transform: translateX(-150px) scale(1);
+}
+
+.intro-title-en,
+.intro-title-zh,
+.intro-subtitle,
+.intro-body {
+    opacity: 0;
+}
+
+.intro-title-en {
+    animation: fadeInLeft 2.2s ease forwards;
+    animation-delay: 0.6s;
+    margin-left: -120px;
+    /* ✅ 微調向左位移 */
+}
+
+.intro-title-zh {
+    animation: fadeInRight 1.4s ease forwards;
+    animation-delay: 0.6s;
+}
+
+.intro-subtitle {
+    animation: fadeInUp 1.6s ease forwards;
+    animation-delay: 1s;
+    margin-top: 15px;  /* 🔧 調整這裡的 px 值來控制間距 */
+}
+
+.intro-body {
+    animation: fadeInUp 2s ease forwards;
+    animation-delay: 1.4s;
+    /* ✅ 加這一行來讓內文段落往下 */
+    margin-top: 30px;
+
+}
+
+@keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(40px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes floatUpDown {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}

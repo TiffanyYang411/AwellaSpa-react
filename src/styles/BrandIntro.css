@@ -1,0 +1,146 @@
+.brand-intro-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-image: url('/images/brand-intro.jpg');
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+/* 用相對定位包住左右文字 */
+.brand-intro-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+/* ✅ 左側標題用 absolute 固定在左側靠近人物右邊緣 */
+.brand-intro-left {
+    position: absolute;
+    top: 35%;
+    /* ✅ 原來是 50%，往上提一點 */
+    left: 50%;
+    /* ✅ 原來是 8%，往左貼一點 */
+    transform: translateY(-50%);
+}
+
+.brand-intro-left .title-line1 {
+    font-family: var(--font-zh);
+    font-size: 85px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212121;
+    margin: 0;
+}
+
+.brand-intro-left .title-line2 {
+    font-family: var(--font-zh);
+    font-size: 85px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212121;
+    margin: 0;
+    margin-left: 85px;
+}
+
+/* ✅ 右側文字區用 flex 靠右即可 */
+.brand-intro-right {
+    position: absolute;
+    top: 65%;
+    right: 4%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* ✅ 改為靠左 */
+    text-align: left;
+    /* ✅ 改為靠左 */
+    max-width: 400px;
+}
+
+.brand-intro-subtitle.en {
+    font-family: var(--font-en);
+    font-size: 40px;
+    font-weight: 500;
+    color: #212121;
+    margin-bottom: 16px;
+}
+
+.brand-intro-paragraph p.zh {
+    font-family: var(--font-zh);
+    font-size: 24px;
+    font-weight: 400;
+    color: #212121;
+    line-height: 1.8;
+    letter-spacing: 0.06em;      /* ✅ 字距 6% */
+    margin: 0;
+}
+
+/* 動畫 */
+.fade-in-line {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInLine 0.6s ease-out forwards;
+  animation-play-state: paused;
+}
+
+.fade-in-line.show {
+  animation-play-state: running;
+}
+
+.delay-1 { animation-delay: 0s; }
+.delay-2 { animation-delay: 0.4s; }
+.delay-3 { animation-delay: 0.8s; }
+.delay-4 { animation-delay: 1.2s; }
+.delay-5 { animation-delay: 1.5s; }
+.delay-6 { animation-delay: 1.8s; }
+.delay-7 { animation-delay: 2.1s; }
+
+@keyframes fadeInLine {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* ✅ 響應式設計 */
+@media (max-width: 768px) {
+
+    .brand-intro-left,
+    .brand-intro-right {
+        position: static;
+        transform: none;
+        text-align: center;
+        align-items: center;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .brand-intro-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: auto;
+        gap: 24px;
+    }
+
+    .brand-intro-left .title-line1,
+    .brand-intro-left .title-line2 {
+        font-size: 48px;
+        margin-left: 0;
+    }
+
+    .brand-intro-subtitle.en {
+        font-size: 28px;
+    }
+
+    .brand-intro-paragraph p.zh {
+        font-size: 18px;
+    }
+}

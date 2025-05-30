@@ -22,9 +22,11 @@ function Hero() {
 
   return (
     <section
+      id="hero-section"
       className="hero-section"
       style={{ backgroundImage: `url(${images[currentIndex]})` }}
     >
+
       <div className="hero-shade"></div> {/* ← 加這層遮罩 */}
       <div className="hero-content">
         <p className="font-en hero-subtitle">Welcome to</p>
