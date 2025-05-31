@@ -5,6 +5,7 @@ import BrandIntro from '../components/BrandIntro';
 import AboutIntro from '../components/AboutIntro';
 import ServiceMenu from '../components/ServiceMenu';
 import ScrollTreatmentIntro from '../components/ScrollTreatmentIntro';
+import TestimonialSection from '../components/TestimonialSection';
 
 function Home() {
     useEffect(() => {
@@ -27,6 +28,7 @@ function Home() {
             <AboutIntro /> {/* ✅ 插入品牌理念圖文區 */}
             <ServiceMenu /> {/* ✅ 放在 AboutIntro 下方 */}
             <ScrollTreatmentIntro />
+            <TestimonialSection />
             {/* 後續還會加：<About />、<ServiceSection /> 等 */}
         </main>
     );

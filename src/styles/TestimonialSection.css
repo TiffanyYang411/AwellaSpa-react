@@ -1,0 +1,145 @@
+.testimonial-section {
+    height: 100vh;
+    background-color: #E7E7E7;
+    padding: 80px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.testimonial-section .zh-title {
+    font-size: 85px;
+    font-weight: 400;
+    letter-spacing: 6%;
+    font-family: var(--font-zh);
+    color: #212121;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    white-space: nowrap;
+    opacity: 0.8;
+}
+
+.testimonial-grid {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+/* === 卡片樣式（玻璃擬態） === */
+.testimonial-card {
+    position: absolute;
+    width: 300px;
+    background: rgba(124, 142, 156, 0.10);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(124, 142, 156, 0.2);
+    border-radius: 15px;
+    padding: 32px 36px;
+    /* ✅ 原本是 24px，這樣會更大更好讀 */
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.08);
+    text-align: left;
+    animation: flyUp 10s linear infinite;
+}
+
+/* === 個別卡片定位（桌機） === */
+.card-1 {
+    left: 8%;
+    animation-delay: 0s;
+}
+
+.card-2 {
+    right: 8%;
+    animation-delay: 2s;
+}
+
+.card-3 {
+    left: 50%;
+    transform: translateX(-50%);
+    animation-delay: 4s;
+}
+
+.card-4 {
+    left: 5%;
+    animation-delay: 5s;
+}
+
+.card-5 {
+    right: 5%;
+    animation-delay: 7s;
+}
+
+.card-6 {
+  left: 50%;
+  top: 10%;
+  transform: translateX(-10%);
+  animation-delay: 9s;
+}
+
+/* === 飄浮動畫 === */
+@keyframes flyUp {
+    0% {
+        top: 100%;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        top: -200px;
+        opacity: 1;
+    }
+
+    100% {
+        top: -200px;
+        opacity: 0;
+    }
+}
+
+/* === 卡片內部樣式 === */
+.testimonial-card h3 {
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+.testimonial-card .stars {
+    color: #142E3F;
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+.testimonial-card p {
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* === RWD: 手機直式排列，不浮動 === */
+@media (max-width: 768px) {
+    .testimonial-card {
+        position: static;
+        width: 90%;
+        margin: 0 auto;
+        animation: none;
+    }
+
+    .testimonial-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: static;
+        height: auto;
+        gap: 16px;
+        padding-top: 120px;
+    }
+
+    .testimonial-section .zh-title {
+        font-size: 48px;
+        top: 40px;
+        transform: translateX(-50%);
+    }
+}
