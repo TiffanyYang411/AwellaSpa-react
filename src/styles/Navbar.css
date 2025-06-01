@@ -74,6 +74,7 @@
     padding: 14px 50px;
     font-size: 16px;
     color: white;
+    /* ✅ 保留白字 */
     font-family: var(--font-zh);
     letter-spacing: 0.06em;
     line-height: 1.5;
@@ -81,18 +82,23 @@
     border-radius: 30px;
     border: 1px solid rgba(255, 255, 255, 0.4);
 
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.05));
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.7));
+    /* ✅ 跟 footer 一致 */
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
 
     box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.25), 0 4px 12px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
+
+    cursor: pointer;
 }
 
 .reserve-button:hover {
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.08));
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 1));
     box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.3), 0 6px 16px rgba(0, 0, 0, 0.25);
 }
+
+
 
 /* === 框架同前略 === */
 
@@ -154,11 +160,31 @@
 }
 
 .mobile-reserve {
-    border: 1px solid white;
-    padding: 10px 20px;
-    border-radius: 30px;
-    text-align: center;
+  display: inline-block;
+  padding: 16px 60px;
+  font-size: 16px;
+  color: #142E3F; /* ✅ 改成主色深字 */
+  font-family: var(--font-zh);
+  letter-spacing: 0.06em;
+  line-height: 1.5;
+  text-decoration: none;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+
+  background: rgba(255, 255, 255, 0.05); /* ✅ 讓白底更實心一點 */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  text-align: center;
+  cursor: pointer;
 }
+
+.mobile-reserve:hover {
+  background: white;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
 
 .close-btn {
     position: absolute;
@@ -183,26 +209,58 @@
 }
 
 .link-button {
-    background: none;
-    border: none;
-    padding: 0;
-    font: inherit;
-    font-family: var(--font-zh);
-    font-size: 16px;
-    line-height: 1.5;
-    letter-spacing: 0.06em;
-    color: white;
-    cursor: pointer;
-    text-decoration: none;
-    text-shadow:
-        0 2px 4px rgba(0, 0, 0, 0.25),
-        0 0 12px rgba(255, 255, 255, 0.2);
+  background: none;
+  border: none;
+  padding: 6px 0;
+  font: inherit;
+  font-family: var(--font-zh);
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.06em;
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.25),
+    0 0 12px rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
 }
+
 
 .link-button:hover {
     opacity: 0.8;
     /* 或者你自己指定其他 hover 效果 */
 }
+
+/* 電腦 hover：加底線、文字變亮白 */
+.navbar-menu .link-button:hover,
+.navbar-menu .link-button.active {
+  color: white;
+  font-weight: 500;
+}
+
+.link-button::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: white;
+  opacity: 0.9;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+
+.link-button:hover::after,
+.link-button.active::after {
+  transform: scaleX(1);
+}
+
+
+
 
 /* ✅ 手機和平板 RWD */
 @media (max-width: 1154px) {
@@ -221,4 +279,36 @@
     .mobile-menu .link-button {
         font-size: 18px;
     }
+
+    .mobile-menu .link-button {
+  font-size: 18px;
+  color: white;
+  background: none;
+  border: none;
+  padding: 6px 0;
+  font-family: var(--font-zh);
+  text-align: left;
+  letter-spacing: 0.06em;
+  position: relative;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+}
+
+.mobile-menu .link-button:hover,
+.mobile-menu .link-button.active {
+  font-weight: 500;
+}
+
+.mobile-menu .link-button:hover::after,
+.mobile-menu .link-button.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  opacity: 0.9;
+}
+
 }

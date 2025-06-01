@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import '../styles/Navbar.css';
@@ -7,7 +7,7 @@ function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
-
+    const [activeSection, setActiveSection] = useState('');
     const handleToggleMenu = () => setIsMenuOpen(!isMenuOpen);
     const handleCloseMenu = () => setIsMenuOpen(false);
 
@@ -15,6 +15,7 @@ function Navbar() {
         const el = document.getElementById(id);
         if (el) {
             el.scrollIntoView({ behavior: 'smooth' });
+            // setActiveSection(id);
         }
     };
 
@@ -30,16 +31,71 @@ function Navbar() {
         }
     };
 
+    // ✅ scrollSpy 功能：觀察畫面中哪個區塊正在顯示
+    useEffect(() => {
+  const sections = [
+    'brand-intro',
+    'service-menu',
+    'gallery-section-wrapper',
+    'scroll-treatment',
+  ];
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      const visibleEntries = entries.filter(e => e.isIntersecting);
+      if (visibleEntries.length > 0) {
+        const mostVisible = visibleEntries.reduce((prev, curr) =>
+          prev.intersectionRatio > curr.intersectionRatio ? prev : curr
+        );
+
+        // ✅ 加入這一段條件，避免重複觸發動畫
+        if (mostVisible.target.id !== activeSection) {
+          setActiveSection(mostVisible.target.id);
+        }
+      } else {
+        if (activeSection !== '') setActiveSection('');
+      }
+    },
+    {
+      threshold: [0.2, 0.4, 0.6], // 可根據實際視覺調整
+    }
+  );
+
+  sections.forEach((id) => {
+    const el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
+
+  return () => {
+    sections.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.unobserve(el);
+    });
+  };
+}, [activeSection]); // ✅ 把 activeSection 放進 dependency 中
+
+
+
     return (
         <>
             <nav className="navbar">
                 <div className="navbar-left">
                     <ul className="navbar-menu">
                         <li>
-                            <button className="link-button" onClick={() => scrollToSection('brand-intro')}>關於我們</button>
+                            <button
+                                className={`link-button ${activeSection === 'brand-intro' ? 'active' : ''}`}
+                                onClick={() => scrollToSection('brand-intro')}
+                            >
+                                關於我們
+                            </button>
                         </li>
                         <li>
-                            <button className="link-button" onClick={() => scrollToSection('service-menu')}>療癒選單</button>
+                            <button
+                                className={`link-button ${activeSection === 'service-menu' ? 'active' : ''}`}
+                                onClick={() => scrollToSection('service-menu')}
+                            >
+                                療癒選單
+                            </button>
                         </li>
                     </ul>
                 </div>
@@ -57,10 +113,20 @@ function Navbar() {
                 <div className="navbar-right">
                     <ul className="navbar-menu">
                         <li>
-                            <button className="link-button" onClick={() => scrollToSection('gallery-section')}>靜謐拾光</button>
+                            <button
+                                className={`link-button ${activeSection === 'gallery-section-wrapper' ? 'active' : ''}`}
+                                onClick={() => scrollToSection('gallery-section-wrapper')}
+                            >
+                                靜謐拾光
+                            </button>
                         </li>
                         <li>
-                            <button className="link-button" onClick={() => scrollToSection('scroll-treatment')}>療癒綻放</button>
+                            <button
+                                className={`link-button ${activeSection === 'scroll-treatment' ? 'active' : ''}`}
+                                onClick={() => scrollToSection('scroll-treatment')}
+                            >
+                                療癒綻放
+                            </button>
                         </li>
                     </ul>
                 </div>
@@ -81,11 +147,43 @@ function Navbar() {
             <div className={`mobile-menu ${isMenuOpen ? 'open' : ''}`}>
                 <button className="close-btn" onClick={handleCloseMenu}>✕</button>
                 <ul>
-                    <li><button onClick={() => { scrollToSection('brand-intro'); handleCloseMenu(); }}>關於我們</button></li>
-                    <li><button onClick={() => { scrollToSection('service-menu'); handleCloseMenu(); }}>療癒選單</button></li>
-                    <li><button onClick={() => { scrollToSection('gallery-section'); handleCloseMenu(); }}>靜謐拾光</button></li>
-                    <li><button onClick={() => { scrollToSection('scroll-treatment'); handleCloseMenu(); }}>療癒綻放</button></li>
-                    <li><button onClick={() => { scrollToSection('hero-section'); handleCloseMenu(); }} className="mobile-reserve">我要預約</button></li>
+                    <li>
+                        <button
+                            className={`link-button ${activeSection === 'brand-intro' ? 'active' : ''}`}
+                            onClick={() => { scrollToSection('brand-intro'); handleCloseMenu(); }}
+                        >
+                            關於我們
+                        </button>
+                    </li>
+                    <li>
+                        <button
+                            className={`link-button ${activeSection === 'service-menu' ? 'active' : ''}`}
+                            onClick={() => { scrollToSection('service-menu'); handleCloseMenu(); }}
+                        >
+                            療癒選單
+                        </button>
+                    </li>
+                    <li>
+                        <button
+                            className={`link-button ${activeSection === 'gallery-section-wrapper' ? 'active' : ''}`}
+                            onClick={() => { scrollToSection('gallery-section-wrapper'); handleCloseMenu(); }}
+                        >
+                            靜謐拾光
+                        </button>
+                    </li>
+                    <li>
+                        <button
+                            className={`link-button ${activeSection === 'scroll-treatment' ? 'active' : ''}`}
+                            onClick={() => { scrollToSection('scroll-treatment'); handleCloseMenu(); }}
+                        >
+                            療癒綻放
+                        </button>
+                    </li>
+                    <li>
+                        <button onClick={() => { scrollToSection('hero-section'); handleCloseMenu(); }} className="mobile-reserve">
+                            我要預約
+                        </button>
+                    </li>
                 </ul>
             </div>
         </>
@@ -93,5 +191,6 @@ function Navbar() {
 }
 
 export default Navbar;
+
 
 

@@ -32,7 +32,9 @@ function Home() {
             <section><ServiceMenu /></section> {/* ❌ 不 snap */}
             <section className="section-snap"><ScrollTreatmentIntro /></section>
             <section className="section-snap"><TestimonialSection /></section>
-            <section><GallerySection /></section> {/* ❌ 不 snap */}
+            <section id="gallery-section-wrapper">
+                <GallerySection />
+            </section>
             <section><FooterSection /></section> {/* ❌ 不 snap */}
         </main>
     );

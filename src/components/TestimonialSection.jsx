@@ -33,7 +33,7 @@ function TestimonialSection() {
 
     return (
         <section className="testimonial-section">
-            <h2 className="zh-title">貴賓好評</h2>
+            <h2 className="zh-title">尊榮見證</h2>
             <div className="testimonial-grid">
                 {testimonials.map((item, index) => (
                     <div className={`testimonial-card card-${index + 1}`} key={index}>
