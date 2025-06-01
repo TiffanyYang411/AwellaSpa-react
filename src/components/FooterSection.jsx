@@ -32,8 +32,8 @@ function FooterSection() {
               gsap.to(contentRef.current, {
                 opacity: 1,
                 y: 0,
-                duration: 1.2,
-                ease: 'power2.out',
+                duration: 1.3,
+                ease: 'power8.out',
               });
             },
           }

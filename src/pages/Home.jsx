@@ -1,5 +1,6 @@
 // src/pages/Home.jsx
 import React, { useEffect } from 'react';
+import '../styles/ScrollTreatmentIntro.css';
 import Hero from '../components/Hero';
 import BrandIntro from '../components/BrandIntro';
 import AboutIntro from '../components/AboutIntro';
@@ -17,26 +18,26 @@ function Home() {
             if (hero) {
                 setTimeout(() => {
                     hero.scrollIntoView({ behavior: 'smooth' });
-                }, 300); // 避免還沒渲染完成就觸發
+                }, 300);
             }
             sessionStorage.removeItem('scrollToHero');
         }
     }, []);
 
     return (
-        <main>
-            <Hero />
-            <BrandIntro /> {/* ✅ 插入品牌介紹區 */}
-            <AboutIntro /> {/* ✅ 插入品牌理念圖文區 */}
-            <ServiceMenu /> {/* ✅ 放在 AboutIntro 下方 */}
-            <ScrollTreatmentIntro />
-            <TestimonialSection />
-            <GallerySection /> 
-            <FooterSection /> 
-            {/* 後續還會加：<About />、<ServiceSection /> 等 */}
+        <main className="snap-container">
+            <section className="section-snap"><Hero /></section>
+            <section className="section-snap"><BrandIntro /></section>
+            <section className="section-snap"><AboutIntro /></section>
+            <section><ServiceMenu /></section> {/* ❌ 不 snap */}
+            <section className="section-snap"><ScrollTreatmentIntro /></section>
+            <section className="section-snap"><TestimonialSection /></section>
+            <section><GallerySection /></section> {/* ❌ 不 snap */}
+            <section><FooterSection /></section> {/* ❌ 不 snap */}
         </main>
     );
 }
 
 export default Home;
+
 

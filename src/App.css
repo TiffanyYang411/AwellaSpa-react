@@ -18,6 +18,19 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
+.snap-container {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 100vh;
+  scroll-behavior: smooth;
+}
+
+.section-snap {
+  height: 100vh;
+  scroll-snap-align: start;
+  flex-shrink: 0;
+}
+
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
