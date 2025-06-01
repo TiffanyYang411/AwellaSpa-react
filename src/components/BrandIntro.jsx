@@ -29,7 +29,7 @@ function BrandIntro() {
 
 
     return (
-        <section className="brand-intro-section">
+        <section id="brand-intro" className="brand-intro-section">
             <div className="brand-intro-container">
                 <div className="brand-intro-left">
                     <h2 className="title-line1 zh fade-in-line delay-1">你的美</h2>

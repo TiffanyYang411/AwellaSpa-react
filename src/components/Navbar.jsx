@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import '../styles/Navbar.css';
@@ -7,48 +7,61 @@ function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
+
     const handleToggleMenu = () => setIsMenuOpen(!isMenuOpen);
     const handleCloseMenu = () => setIsMenuOpen(false);
+
+    const scrollToSection = (id) => {
+        const el = document.getElementById(id);
+        if (el) {
+            el.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
+    const handleLogoClick = () => {
+        if (location.pathname === '/') {
+            const hero = document.querySelector('#hero-section');
+            if (hero) {
+                hero.scrollIntoView({ behavior: 'smooth' });
+            }
+        } else {
+            sessionStorage.setItem('scrollToHero', 'true');
+            navigate('/');
+        }
+    };
 
     return (
         <>
             <nav className="navbar">
                 <div className="navbar-left">
                     <ul className="navbar-menu">
-                        <li><Link to="/about">關於我們</Link></li>
-                        <li><Link to="/treatments">療癒選單</Link></li>
+                        <li>
+                            <button className="link-button" onClick={() => scrollToSection('brand-intro')}>關於我們</button>
+                        </li>
+                        <li>
+                            <button className="link-button" onClick={() => scrollToSection('service-menu')}>療癒選單</button>
+                        </li>
                     </ul>
                 </div>
 
                 <div className="navbar-center">
-                    <button
-                        onClick={() => {
-                            if (location.pathname === '/') {
-                                const hero = document.querySelector('#hero-section');
-                                if (hero) {
-                                    hero.scrollIntoView({ behavior: 'smooth' });
-                                }
-                            } else {
-                                sessionStorage.setItem('scrollToHero', 'true');
-                                navigate('/');
-                            }
-                        }}
-                        className="navbar-logo-button"
-                    >
+                    <button onClick={handleLogoClick} className="navbar-logo-button">
                         <img
                             src={`${import.meta.env.BASE_URL}images/logo-white.svg`}
                             alt="Awella Spa Logo"
                             className="navbar-logo"
                         />
                     </button>
-
-
                 </div>
 
                 <div className="navbar-right">
                     <ul className="navbar-menu">
-                        <li><Link to="/ambience">靜謐拾光</Link></li>
-                        <li><Link to="/faq">常見問題</Link></li>
+                        <li>
+                            <button className="link-button" onClick={() => scrollToSection('gallery-section')}>靜謐拾光</button>
+                        </li>
+                        <li>
+                            <button className="link-button" onClick={() => scrollToSection('scroll-treatment')}>療癒綻放</button>
+                        </li>
                     </ul>
                 </div>
 
@@ -61,18 +74,18 @@ function Navbar() {
                 </div>
             </nav>
 
-            {/* ✅ 遮罩背景 */}
+            {/* 遮罩背景 */}
             {isMenuOpen && <div className="menu-overlay" onClick={handleCloseMenu} />}
 
-            {/* ✅ 側邊選單 */}
+            {/* 側邊選單 */}
             <div className={`mobile-menu ${isMenuOpen ? 'open' : ''}`}>
                 <button className="close-btn" onClick={handleCloseMenu}>✕</button>
                 <ul>
-                    <li><Link to="/about" onClick={handleCloseMenu}>關於我們</Link></li>
-                    <li><Link to="/treatments" onClick={handleCloseMenu}>療癒選單</Link></li>
-                    <li><Link to="/ambience" onClick={handleCloseMenu}>靜謐拾光</Link></li>
-                    <li><Link to="/faq" onClick={handleCloseMenu}>常見問題</Link></li>
-                    <li><Link to="/booking" onClick={handleCloseMenu} className="mobile-reserve">我要預約</Link></li>
+                    <li><button onClick={() => { scrollToSection('brand-intro'); handleCloseMenu(); }}>關於我們</button></li>
+                    <li><button onClick={() => { scrollToSection('service-menu'); handleCloseMenu(); }}>療癒選單</button></li>
+                    <li><button onClick={() => { scrollToSection('gallery-section'); handleCloseMenu(); }}>靜謐拾光</button></li>
+                    <li><button onClick={() => { scrollToSection('scroll-treatment'); handleCloseMenu(); }}>療癒綻放</button></li>
+                    <li><button onClick={() => { scrollToSection('hero-section'); handleCloseMenu(); }} className="mobile-reserve">我要預約</button></li>
                 </ul>
             </div>
         </>
@@ -80,4 +93,5 @@ function Navbar() {
 }
 
 export default Navbar;
+
 

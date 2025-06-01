@@ -80,7 +80,7 @@ function GallerySection() {
     }, []);
 
     return (
-        <section className="gallery-section" ref={sectionRef}>
+        <section id="gallery-section" className="gallery-section" ref={sectionRef}>
             <div className="gallery-title-bg">SERENE MOMENTS</div>
             <div className="gallery-track" ref={trackRef}>
                 {images.map((src, index) => (

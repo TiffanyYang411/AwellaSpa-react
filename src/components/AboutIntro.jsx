@@ -23,7 +23,7 @@ function AboutIntro() {
     }, []);
 
     return (
-        <section className="about-intro-section">
+         <section id="about-intro" className="about-intro-section">
             <div className="about-intro-images">
                 <div className="img-wrapper img1-wrapper fade-in-img">
                     <img src={`${import.meta.env.BASE_URL}images/about-1.png`} alt="Spa honey towel" className="about-img img1" />

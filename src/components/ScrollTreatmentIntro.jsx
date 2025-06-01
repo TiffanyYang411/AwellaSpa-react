@@ -33,7 +33,7 @@ function ScrollTreatmentIntro() {
     }, []);
 
     return (
-        <section className="treatment-section">
+        <section id="scroll-treatment" className="treatment-section">
             <div className={`treatment-block back ${isBackActive ? 'active' : ''}`} ref={backRef}>
                 <img src={`${import.meta.env.BASE_URL}images/spa-scroll-1.jpg`} alt="Back treatment" className={`treatment-bg ${isBackActive ? 'show' : ''}`} />
                 <div className={`treatment-dot ${isBackActive ? 'show' : ''}`} style={{ top: '70%', left: '51%' }}></div>
