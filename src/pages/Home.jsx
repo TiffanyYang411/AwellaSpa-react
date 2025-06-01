@@ -6,6 +6,8 @@ import AboutIntro from '../components/AboutIntro';
 import ServiceMenu from '../components/ServiceMenu';
 import ScrollTreatmentIntro from '../components/ScrollTreatmentIntro';
 import TestimonialSection from '../components/TestimonialSection';
+import GallerySection from '../components/GallerySection';
+import FooterSection from '../components/FooterSection';
 
 function Home() {
     useEffect(() => {
@@ -29,6 +31,8 @@ function Home() {
             <ServiceMenu /> {/* ✅ 放在 AboutIntro 下方 */}
             <ScrollTreatmentIntro />
             <TestimonialSection />
+            <GallerySection /> 
+            <FooterSection /> 
             {/* 後續還會加：<About />、<ServiceSection /> 等 */}
         </main>
     );

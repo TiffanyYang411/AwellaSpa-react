@@ -1,6 +1,6 @@
 .testimonial-section {
     height: 100vh;
-    background-color: #E7E7E7;
+    background-color: #E3E9E2;
     padding: 80px 20px;
     position: relative;
     overflow: hidden;
@@ -32,7 +32,9 @@
 /* === 卡片樣式（玻璃擬態） === */
 .testimonial-card {
     position: absolute;
-    width: 300px;
+    width: 320px;
+    bottom: -200px; /* ✅ 統一從底部飛上來 */
+    transform: translateY(0);
     background: rgba(124, 142, 156, 0.10);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -43,11 +45,12 @@
     box-shadow: 0 6px 30px rgba(0, 0, 0, 0.08);
     text-align: left;
     animation: flyUp 10s linear infinite;
+    animation-fill-mode: both; /* ✅ 讓 delay 時也保留初始樣式 */
 }
 
 /* === 個別卡片定位（桌機） === */
 .card-1 {
-    left: 8%;
+    left: 10%;
     animation-delay: 0s;
 }
 
@@ -57,8 +60,7 @@
 }
 
 .card-3 {
-    left: 50%;
-    transform: translateX(-50%);
+    left: 40%;
     animation-delay: 4s;
 }
 
@@ -73,16 +75,14 @@
 }
 
 .card-6 {
-  left: 50%;
-  top: 10%;
-  transform: translateX(-10%);
-  animation-delay: 9s;
+    left: 50%;
+    animation-delay: 9s;
 }
 
 /* === 飄浮動畫 === */
 @keyframes flyUp {
     0% {
-        top: 100%;
+        transform: translateY(0);
         opacity: 0;
     }
 
@@ -91,19 +91,20 @@
     }
 
     90% {
-        top: -200px;
+        transform: translateY(-120vh);
         opacity: 1;
     }
 
     100% {
-        top: -200px;
+        transform: translateY(-120vh);
         opacity: 0;
     }
 }
 
 /* === 卡片內部樣式 === */
 .testimonial-card h3 {
-    font-size: 16px;
+    font-size: 20px;
+    font-weight: 400;
     margin-bottom: 12px;
 }
 
@@ -114,8 +115,14 @@
 }
 
 .testimonial-card p {
-    font-size: 15px;
-    line-height: 1.6;
+    font-size: 16px;
+    line-height: 160%; /* ✅ 讓行距更舒服 */
+}
+
+.testimonial-card h3,
+.testimonial-card .stars,
+.testimonial-card p {
+    letter-spacing: 0.06em; /* 約等於 6% 字距 */
 }
 
 /* === RWD: 手機直式排列，不浮動 === */

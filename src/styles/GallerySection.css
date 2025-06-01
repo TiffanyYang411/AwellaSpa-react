@@ -1,0 +1,71 @@
+.gallery-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    /* ✅ 保證可 pin */
+    overflow: hidden;
+    background-image: url('/AwellaSpa-react/images/gallery-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.gallery-title-bg {
+    position: absolute;
+    font-size: 130px;
+    font-weight: bold;
+    color: rgba(245, 248, 247, 0.8);
+    font-family: var(--font-en);
+    letter-spacing: 6px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.gallery-track {
+    flex-shrink: 0;
+    width: max-content;
+    /* ✅ 讓寬度自動延伸到所有 item */
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    height: 100%;
+    padding-right: 100vw;
+    /* 確保最後一張圖可完全滑到左側 */
+    will-change: transform;
+    z-index: 2;
+    position: relative;
+    border: 2px solid red;
+    /* ✅ 開發時觀察寬度用，完成後可刪 */
+}
+
+.gallery-item {
+    flex: 0 0 auto;
+    opacity: 0;
+    transform: translateY(0);
+    width: 500px;
+    /* ✅ 加這行保險 */
+}
+
+.gallery-item.up {
+    transform: translateY(-40px);
+}
+
+.gallery-item.down {
+    transform: translateY(40px);
+}
+
+.gallery-item img {
+    width: 100%;
+    display: block;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
