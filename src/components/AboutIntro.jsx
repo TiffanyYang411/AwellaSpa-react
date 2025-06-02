@@ -38,7 +38,7 @@ function AboutIntro() {
 
             <div className="about-intro-text shifted-text fade-in-text">
                 <h2 className="zh-title updated-zh-title intro-title shifted-title">
-                    <span className="font-en intro-title-en" style={{ fontSize: '40px', fontWeight: 500, letterSpacing: '0em' }}>
+                    <span className="font-en intro-title-en" style={{ fontSize: '40px', fontWeight: 'bold', letterSpacing: '0em' }}>
                         Awella Spa
                     </span>
                     <span className="font-zh intro-title-zh" style={{ fontSize: '40px', fontWeight: '500', letterSpacing: '0.06em', marginLeft: '3px' }}>

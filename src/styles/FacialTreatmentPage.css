@@ -1,0 +1,47 @@
+.facial-page-container {
+  width: 100%;
+  padding-top: 100px; /* 若有固定 navbar */
+  background-color: #fffef9;
+}
+
+.treatment-section {
+  padding: 80px 40px;
+  background-color: #fefaf7;
+  border-bottom: 1px solid #ddd;
+  min-height: 100vh;
+}
+
+/* main {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  scroll-snap-type: y mandatory;
+}
+
+.treatment-section {
+  scroll-snap-align: start;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  overscroll-behavior: none;
+  font-family: 'Piazzolla', serif;
+  background-color: #fffdfc;
+}
+
+.treatment-section img,
+.treatment-section h2,
+.treatment-section .card-list {
+  transition: all 0.4s ease;
+}
+
+.treatment-section {
+  background-color: #fefaf7;
+}
+
+.category-title {
+  color: #314D61;
+} */

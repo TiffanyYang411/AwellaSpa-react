@@ -12,7 +12,7 @@
 .gallery-section::after {
   content: '';
   display: block;
-  height: 100vh; /* 讓 Footer 能順滑銜接 */
+  height: 100vh;
 }
 
 .gallery-title-bg {
@@ -39,17 +39,19 @@
   position: relative;
   will-change: transform;
   z-index: 2;
+  padding: 0 40px;
 }
 
 .gallery-item {
   flex: 0 0 auto;
   width: 500px;
-  opacity: 0; /* 初始透明，滾動才顯示 */
+  opacity: 0;
+  transition: opacity 0.5s ease;
 }
 
 .gallery-item.up {
   transform: translateY(-40px);
-  margin-top: -300px;
+  margin-top: -200px;
 }
 
 .gallery-item.down {
@@ -59,6 +61,7 @@
 
 .gallery-item img {
   width: 100%;
+  height: auto;
   display: block;
   border-radius: 16px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
@@ -68,3 +71,43 @@
 .gallery-item:hover img {
   transform: scale(1.05);
 }
+
+/* RWD 手機與平板版型調整 */
+@media (max-width: 1150px) {
+  .gallery-track {
+    gap: 40px;
+    min-width: auto;
+    padding: 0 20px;
+  }
+
+  .gallery-item {
+    width: 80vw;
+    margin-top: 0;
+    transform: none !important;
+  }
+
+  .gallery-item.up,
+  .gallery-item.down {
+    margin-top: 0;
+  }
+
+  .gallery-title-bg {
+    font-size: 72px;
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery-title-bg {
+    font-size: 48px;
+  }
+
+  .gallery-track {
+    gap: 20px;
+    padding: 0 10px;
+  }
+
+  .gallery-item {
+    width: 90vw;
+  }
+}
+

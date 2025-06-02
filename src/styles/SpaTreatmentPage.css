@@ -1,0 +1,27 @@
+main {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  scroll-snap-type: y mandatory;
+}
+
+.treatment-section {
+  scroll-snap-align: start;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  overscroll-behavior: none;
+  font-family: 'Piazzolla', serif;
+  background-color: #fefefe;
+}
+
+/* 可依需求新增動畫時的基本過渡 */
+.treatment-section img,
+.treatment-section h2,
+.treatment-section .card-list {
+  transition: all 0.4s ease;
+}

@@ -51,7 +51,7 @@
 /* ✅ 右側文字區用 flex 靠右即可 */
 .brand-intro-right {
     position: absolute;
-    top: 65%;
+    top: 70%;
     right: 4%;
     transform: translateY(-50%);
     display: flex;
@@ -66,7 +66,7 @@
 .brand-intro-subtitle.en {
     font-family: var(--font-en);
     font-size: 40px;
-    font-weight: 500;
+    font-weight: bold;
     color: #212121;
     margin-bottom: 16px;
 }
