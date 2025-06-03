@@ -4,12 +4,15 @@ import React, { useEffect, useState, useRef } from 'react';
 import '../styles/ServiceMenu.css';
 import '../styles/Modal.css';
 import spaTreatmentsData from '../data/spaTreatmentsData';
+import facialTreatmentsData from '../data/facialTreatmentsData';
 import SpaModalPages from '../components/SpaModalPages';
+import FacialModalPages from '../components/FacialModalPages';
 import TreatmentCategoryNav from '../components/TreatmentCategoryNav';
 import gsap from 'gsap';
 
 function ServiceMenu() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isFacialModalOpen, setIsFacialModalOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const modalContentRef = useRef(null);
 
@@ -21,6 +24,16 @@ function ServiceMenu() {
     document.body.style.width = '100%';
     document.body.dataset.scrollY = scrollY;
     setIsModalOpen(true);
+  };
+
+  const openFacialModal = () => {
+    const scrollY = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.overflow = 'hidden';
+    document.body.style.width = '100%';
+    document.body.dataset.scrollY = scrollY;
+    setIsFacialModalOpen(true);
   };
 
   const closeModal = () => {
@@ -40,15 +53,17 @@ function ServiceMenu() {
           document.body.style.width = '';
           window.scrollTo(0, parseInt(scrollY));
           setIsModalOpen(false);
+          setIsFacialModalOpen(false);
         },
       });
     } else {
       setIsModalOpen(false);
+      setIsFacialModalOpen(false);
     }
   };
 
   useEffect(() => {
-    if (isModalOpen) {
+    if (isModalOpen || isFacialModalOpen) {
       document.body.style.overflow = 'hidden';
       document.body.style.position = 'fixed';
       document.body.style.width = '100%';
@@ -62,19 +77,19 @@ function ServiceMenu() {
       document.body.style.position = '';
       document.body.style.width = '';
     };
-  }, [isModalOpen]);
+  }, [isModalOpen, isFacialModalOpen]);
 
   useEffect(() => {
     const el = modalContentRef.current;
     if (!el) return;
-    if (isModalOpen) {
+    if (isModalOpen || isFacialModalOpen) {
       gsap.fromTo(
         el,
         { opacity: 0, y: 80, scale: 0.85 },
         { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: 'power3.out' }
       );
     }
-  }, [isModalOpen]);
+  }, [isModalOpen, isFacialModalOpen]);
 
   useEffect(() => {
     const cards = document.querySelectorAll('.slide-card');
@@ -139,18 +154,19 @@ function ServiceMenu() {
             以深層清潔、膠原修護、亮白滋潤為核心，結合高效保養成分與科技⼿法如超音波導入、氧氣療法，量身打造每一吋肌膚的專屬呵護。從潔淨、修護到喚醒肌膚活力，層層堆疊，重現自然透亮的光采感。
           </p>
           <img src={`${import.meta.env.BASE_URL}images/face-card.jpg`} alt="face treatment" />
-          <button className="service-btn">探索更多美好</button>
+          <button className="service-btn" onClick={openFacialModal}>探索更多美好</button>
         </div>
       </div>
 
-      {isModalOpen && (
+      {(isModalOpen || isFacialModalOpen) && (
         <div className="modal-overlay" onClick={closeModal}>
           <div className="treatment-category-nav-wrapper" onClick={(e) => e.stopPropagation()}>
             <TreatmentCategoryNav
-              categories={spaTreatmentsData.map((d) => d.category)}
+              categories={(isModalOpen ? spaTreatmentsData : facialTreatmentsData).map((d) => d.category)}
               onNavigate={(index) => {
                 setActiveIndex(index);
-                const target = document.getElementById(`modal-section-${index}`);
+                const targetId = isModalOpen ? `modal-section-${index}` : `facial-modal-section-${index}`;
+                const target = document.getElementById(targetId);
                 if (target) {
                   target.scrollIntoView({ behavior: 'smooth' });
                 }
@@ -170,7 +186,11 @@ function ServiceMenu() {
                 <line x1="26" y1="14" x2="14" y2="26" stroke="#212121" strokeWidth="1.2" />
               </svg>
             </button>
-            <SpaModalPages activeIndex={activeIndex} setActiveIndex={setActiveIndex} />
+            {isModalOpen ? (
+              <SpaModalPages activeIndex={activeIndex} setActiveIndex={setActiveIndex} />
+            ) : (
+              <FacialModalPages activeIndex={activeIndex} setActiveIndex={setActiveIndex} />
+            )}
           </div>
         </div>
       )}

@@ -46,12 +46,12 @@
 
 .tag {
   display: inline-block;
-  background-color: #F4F4EC;
-  color: #212121;
+  background-color: #A97A6E;
+  color: #fff;
   padding: 6px 10px;
   border-radius: 20px;
   font-size: 16px;
-  margin: 4px 6px 8px 0;
+  margin: 10px 12px 0 0;
 }
 
 .steps,
@@ -68,13 +68,14 @@
 }
 
 .reserve-btn {
-  margin-top: 5px;
-  padding: 12px 24px;
+  margin-top: 0px;
+  margin-bottom: 5px;
+  padding: 12px 36px;
   background-color: #314D61;
   color: white;
   border: none;
   border-radius: 25px;
-  font-size: 14px;
+  font-size: 16px;
   font-family: var(--font-zh);
   /* ✅ 加這行 */
   cursor: pointer;

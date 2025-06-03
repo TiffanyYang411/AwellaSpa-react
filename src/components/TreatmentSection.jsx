@@ -1,3 +1,4 @@
+// TreatmentSection.jsx
 import React, { useEffect, useRef, useState } from 'react';
 import TreatmentDetailCard from './TreatmentDetailCard';
 import '../styles/TreatmentSection.css';
