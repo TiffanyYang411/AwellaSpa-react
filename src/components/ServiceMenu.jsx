@@ -1,46 +1,62 @@
 // ServiceMenu.jsx
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import '../styles/ServiceMenu.css';
-import '../styles/Modal.css'; // ✅ 你等一下需要建立這個 CSS
-import SpaModalPages from '../components/SpaModalPages'; // 加上這行
-
+import '../styles/Modal.css';
+import spaTreatmentsData from '../data/spaTreatmentsData';
+import SpaModalPages from '../components/SpaModalPages';
+import TreatmentCategoryNav from '../components/TreatmentCategoryNav';
+import gsap from 'gsap';
 
 function ServiceMenu() {
-  const [isModalOpen, setIsModalOpen] = useState(false); // ✅ 新增
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const modalContentRef = useRef(null);
+
   const openModal = () => {
     const scrollY = window.scrollY;
     document.body.style.position = 'fixed';
     document.body.style.top = `-${scrollY}px`;
     document.body.style.overflow = 'hidden';
     document.body.style.width = '100%';
-    document.body.dataset.scrollY = scrollY; // 用來還原 scroll 用
-
+    document.body.dataset.scrollY = scrollY;
     setIsModalOpen(true);
   };
-  const closeModal = () => {
-    const scrollY = document.body.dataset.scrollY || '0';
-    document.body.style.position = '';
-    document.body.style.top = '';
-    document.body.style.overflow = '';
-    document.body.style.width = '';
-    window.scrollTo(0, parseInt(scrollY)); // 還原原本畫面位置
 
-    setIsModalOpen(false);
+  const closeModal = () => {
+    const el = modalContentRef.current;
+    if (el) {
+      gsap.to(el, {
+        opacity: 0,
+        y: 80,
+        scale: 0.85,
+        duration: 0.5,
+        ease: 'power3.inOut',
+        onComplete: () => {
+          const scrollY = document.body.dataset.scrollY || '0';
+          document.body.style.position = '';
+          document.body.style.top = '';
+          document.body.style.overflow = '';
+          document.body.style.width = '';
+          window.scrollTo(0, parseInt(scrollY));
+          setIsModalOpen(false);
+        },
+      });
+    } else {
+      setIsModalOpen(false);
+    }
   };
 
-  // ✅ 加這段：鎖住 body 滾動
   useEffect(() => {
     if (isModalOpen) {
       document.body.style.overflow = 'hidden';
-      document.body.style.position = 'fixed'; // ✅ 加這行
+      document.body.style.position = 'fixed';
       document.body.style.width = '100%';
     } else {
       document.body.style.overflow = '';
       document.body.style.position = '';
       document.body.style.width = '';
     }
-
     return () => {
       document.body.style.overflow = '';
       document.body.style.position = '';
@@ -48,10 +64,20 @@ function ServiceMenu() {
     };
   }, [isModalOpen]);
 
+  useEffect(() => {
+    const el = modalContentRef.current;
+    if (!el) return;
+    if (isModalOpen) {
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 80, scale: 0.85 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: 'power3.out' }
+      );
+    }
+  }, [isModalOpen]);
 
   useEffect(() => {
     const cards = document.querySelectorAll('.slide-card');
-
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -70,14 +96,9 @@ function ServiceMenu() {
           }
         });
       },
-      {
-        threshold: 0.3,
-        rootMargin: "0px 0px -50% 0px",
-      }
+      { threshold: 0.3, rootMargin: '0px 0px -50% 0px' }
     );
-
     cards.forEach((el) => observer.observe(el));
-
     const title = document.querySelector('.fade-title');
     const titleObserver = new IntersectionObserver(
       ([entry]) => {
@@ -89,13 +110,9 @@ function ServiceMenu() {
           title.classList.add('title-out');
         }
       },
-      {
-        threshold: 0,
-        rootMargin: "0px 0px -50% 0px",
-      }
+      { threshold: 0, rootMargin: '0px 0px -50% 0px' }
     );
     if (title) titleObserver.observe(title);
-
     return () => {
       cards.forEach((el) => observer.unobserve(el));
       if (title) titleObserver.unobserve(title);
@@ -106,7 +123,6 @@ function ServiceMenu() {
     <section id="service-menu" className="service-menu-section">
       <h2 className="service-title fade-title">OUR SERVICES</h2>
       <div className="service-card-wrapper">
-        {/* 左邊卡片 */}
         <div className="service-card slide-card slide-left">
           <h3>嚴選SPA療程</h3>
           <p className="sub-title">為您打造無聲的療癒語言</p>
@@ -114,13 +130,8 @@ function ServiceMenu() {
             匯集世界各地芳療靈感與手技傳承，搭配有機植物精油與情境香氛，從背部、肩頸至頭部穴位釋壓，全方位釋放壓⼒與疲憊。這不只是一場按摩，更是一段為自己保留的靜心旅程，讓每個深層觸碰，都成為與自我對話的儀式。
           </p>
           <img src={`${import.meta.env.BASE_URL}images/spa-card.jpg`} alt="spa oil" />
-          <button className="service-btn" onClick={openModal}>
-            展開療癒旅程
-          </button>
-
+          <button className="service-btn" onClick={openModal}>展開療癒旅程</button>
         </div>
-
-        {/* 右邊卡片 */}
         <div className="service-card slide-card slide-right">
           <h3>肌膚管理療程</h3>
           <p className="sub-title">讓美麗從細節開始發光</p>
@@ -132,27 +143,43 @@ function ServiceMenu() {
         </div>
       </div>
 
-      {/* ✅ Modal 畫面 */}
       {isModalOpen && (
-  <div
-    className="modal-overlay"
-    onClick={closeModal} // ✅ 移除 class 判斷，整個 overlay 點擊就關閉
-  >
-    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-      <button className="close-btn" onClick={closeModal}>×</button>
-      <div className="modal-section-wrapper">
-        <SpaModalPages />
-      </div>
-    </div>
-  </div>
-)}
-
-
-
+        <div className="modal-overlay" onClick={closeModal}>
+          <div className="treatment-category-nav-wrapper" onClick={(e) => e.stopPropagation()}>
+            <TreatmentCategoryNav
+              categories={spaTreatmentsData.map((d) => d.category)}
+              onNavigate={(index) => {
+                setActiveIndex(index);
+                const target = document.getElementById(`modal-section-${index}`);
+                if (target) {
+                  target.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+              activeIndex={activeIndex}
+            />
+          </div>
+          <div
+            className="modal-content"
+            ref={modalContentRef}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button className="close-btn" onClick={closeModal} aria-label="Close">
+              <svg className="close-icon" viewBox="0 0 40 40" width="40" height="40">
+                <circle cx="20" cy="20" r="18" stroke="#212121" strokeWidth="1.2" fill="none" />
+                <line x1="14" y1="14" x2="26" y2="26" stroke="#212121" strokeWidth="1.2" />
+                <line x1="26" y1="14" x2="14" y2="26" stroke="#212121" strokeWidth="1.2" />
+              </svg>
+            </button>
+            <SpaModalPages activeIndex={activeIndex} setActiveIndex={setActiveIndex} />
+          </div>
+        </div>
+      )}
     </section>
   );
 }
 
 export default ServiceMenu;
+
+
 
 

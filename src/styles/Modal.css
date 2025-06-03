@@ -1,7 +1,4 @@
 /* Modal.css */
-/* ✅ Modal.css 全新優化，解決跳窗爆版與內層捲軸 */
-
-/* ✅ Modal.css 全新優化，解決跳窗爆版與內層捲軸，並支援上下滾動切換頁面 */
 
 .modal-overlay {
   position: fixed;
@@ -45,14 +42,28 @@
 
 .close-btn {
   position: absolute;
-  top: 16px;
-  right: 24px;
-  font-size: 28px;
+  top: 20px;
+  right: 30px;
   background: none;
   border: none;
-  color: #314D61;
+  padding: 0;
   cursor: pointer;
-  z-index: 1001;
+  z-index: 10;
+}
+
+.close-icon {
+  width: 40px;
+  height: 40px;
+  transition: transform 0.2s ease;
+}
+
+.close-btn:hover .close-icon {
+  transform: scale(1.1);
+}
+
+.close-btn:hover .close-icon line,
+.close-btn:hover .close-icon circle {
+  stroke: #314D61; /* 或你主色 */
 }
 
 .spa-treatment-modal-content {
@@ -74,4 +85,14 @@
   /* ✅ Chrome 隱藏 */
 }
 
+.treatment-category-nav-wrapper {
+  position: fixed;
+  top: 80px;
+  left: 60px;
+  z-index: 2001;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  padding: 10px 14px;
+}
 

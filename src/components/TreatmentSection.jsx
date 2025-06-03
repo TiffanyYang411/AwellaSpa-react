@@ -1,9 +1,8 @@
-// TreatmentSection.jsx
 import React, { useEffect, useRef, useState } from 'react';
 import TreatmentDetailCard from './TreatmentDetailCard';
 import '../styles/TreatmentSection.css';
 
-function TreatmentSection({ categoryData, sectionId, bgClass = '' }) {
+function TreatmentSection({ categoryData, sectionId, bgClass = '', onVisible }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const sectionRef = useRef(null);
   const { category, treatments } = categoryData;
@@ -12,11 +11,12 @@ function TreatmentSection({ categoryData, sectionId, bgClass = '' }) {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
+          onVisible?.(); // ✅ 有傳才執行
           setActiveIndex(0); // 每次進入畫面就展開第一個子療程
         }
       },
       {
-        threshold: 0.6, // 60% 區塊進入時觸發
+        threshold: 0.6,
       }
     );
 
@@ -63,6 +63,7 @@ function TreatmentSection({ categoryData, sectionId, bgClass = '' }) {
 }
 
 export default TreatmentSection;
+
 
 
 

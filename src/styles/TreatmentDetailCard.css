@@ -1,7 +1,8 @@
 .treatment-card {
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #314D61;
   padding: 0 0 20px 0;
   transition: all 0.3s ease;
+  overflow: hidden;
 }
 
 .card-header {
@@ -19,13 +20,24 @@
 
 .time-price {
   font-size: 14px;
-  color: #888;
+  color: #212121;
+}
+
+.card-body-wrapper {
+  overflow: hidden;
+  transition: max-height 0.6s ease;
 }
 
 .card-body {
-  margin-top: 16px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  will-change: opacity, transform;
+}
+
+.treatment-card.active .card-body {
   opacity: 1;
-  transition: opacity 0.3s ease;
+  transform: translateY(0);
 }
 
 .content-line {
@@ -34,11 +46,11 @@
 
 .tag {
   display: inline-block;
-  background-color: #f4f4f4;
-  color: #333;
+  background-color: #F4F4EC;
+  color: #212121;
   padding: 6px 10px;
   border-radius: 20px;
-  font-size: 13px;
+  font-size: 16px;
   margin: 4px 6px 8px 0;
 }
 
@@ -46,7 +58,7 @@
 .description,
 .benefits {
   margin: 12px 0;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.6;
 }
 
@@ -56,14 +68,15 @@
 }
 
 .reserve-btn {
-  margin-top: 12px;
-  padding: 10px 20px;
+  margin-top: 5px;
+  padding: 12px 24px;
   background-color: #314D61;
   color: white;
   border: none;
   border-radius: 25px;
   font-size: 14px;
-  font-family: var(--font-zh); /* ✅ 加這行 */
+  font-family: var(--font-zh);
+  /* ✅ 加這行 */
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
@@ -74,5 +87,31 @@
 
 /* ✅ 新增：預約按鈕中文字體 */
 button.service-btn {
-   font-family: 'LXGW WenKai TC', sans-serif !important;
+  font-family: 'LXGW WenKai TC', sans-serif !important;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.card-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.toggle-arrow {
+  transition: transform 0.3s ease;
+  margin-left: 8px;
+}
+
+
+
+.card-body.expanded {
+  max-height: 1000px;
+  /* 或根據實際內容估略大值 */
+  opacity: 1;
 }

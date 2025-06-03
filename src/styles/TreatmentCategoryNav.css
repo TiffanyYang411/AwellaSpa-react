@@ -1,7 +1,7 @@
 .treatment-nav {
   position: fixed;
-  top: 30px;
-  left: 30px;
+  top: 46px;
+  left: 70px;
   z-index: 1000;
   display: flex;
   flex-direction: column;
@@ -30,3 +30,24 @@
   background-color: #e6eff3;
   color: #314D61;
 }
+
+.nav-button.active {
+  font-weight: 500;
+  color: #142E3F;
+  position: relative;
+  display: inline-block; /* ✅ 讓 ::after 能貼著文字寬度 */
+}
+
+.nav-button.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px; /* 可微調上下位置 */
+  width: 100%;   /* ✅ 與文字寬度一致（靠 display: inline-block） */
+  height: 1px;   /* ✅ 線條改細一點 */
+  background-color: #314D61;
+  border-radius: 1px;
+  transform: scaleX(0.9); /* ✅ 縮短 90% */
+  transform-origin: center;
+}
+
