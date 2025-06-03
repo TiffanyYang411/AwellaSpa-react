@@ -163,7 +163,7 @@ const spaTreatmentsData = [
         image:`${import.meta.env.BASE_URL}images/spa5_2.jpg`
       },
       {
-        name: "香氛泡浴+身體滋養",
+        name: "香氛泡浴 + 身體滋養",
         time: "85 mins",
         price: "NT$ 2,800",
         steps: ["水療精油泡浴", "磨砂去角質", "深層潤膚敷體"],

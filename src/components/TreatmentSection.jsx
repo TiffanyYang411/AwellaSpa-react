@@ -1,16 +1,41 @@
-import React, { useState } from 'react';
+// TreatmentSection.jsx
+import React, { useEffect, useRef, useState } from 'react';
 import TreatmentDetailCard from './TreatmentDetailCard';
 import '../styles/TreatmentSection.css';
 
-
-function TreatmentSection({ categoryData, sectionId }) {
+function TreatmentSection({ categoryData, sectionId, bgClass = '' }) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const sectionRef = useRef(null);
   const { category, treatments } = categoryData;
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setActiveIndex(0); // 每次進入畫面就展開第一個子療程
+        }
+      },
+      {
+        threshold: 0.6, // 60% 區塊進入時觸發
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) observer.unobserve(sectionRef.current);
+    };
+  }, []);
+
   return (
-    <section className="treatment-section" id={sectionId}>
+    <section
+      className={`modal-treatment-section ${bgClass}`}
+      id={sectionId}
+      ref={sectionRef}
+    >
       <div className="section-inner">
-        {/* 左側圖片區（根據 activeIndex 切換） */}
         <div className="image-column">
           <img
             src={treatments[activeIndex].image}
@@ -19,7 +44,6 @@ function TreatmentSection({ categoryData, sectionId }) {
           />
         </div>
 
-        {/* 右側文字區 */}
         <div className="info-column">
           <h2 className="category-title">{category}</h2>
           <div className="card-list">
@@ -39,3 +63,6 @@ function TreatmentSection({ categoryData, sectionId }) {
 }
 
 export default TreatmentSection;
+
+
+

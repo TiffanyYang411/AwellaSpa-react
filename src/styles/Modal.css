@@ -1,39 +1,77 @@
+/* Modal.css */
+/* ✅ Modal.css 全新優化，解決跳窗爆版與內層捲軸 */
+
+/* ✅ Modal.css 全新優化，解決跳窗爆版與內層捲軸，並支援上下滾動切換頁面 */
+
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(20, 46, 63, 0.6);
-  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 999;
   display: flex;
   justify-content: center;
   align-items: center;
-
-  /* ✅ 禁用滑動、觸控穿透 */
-  overscroll-behavior: contain;
-  touch-action: none;
+  overflow: hidden;
+  /* ✅ 外層不滾動 */
 }
 
 .modal-content {
   width: 90%;
   max-width: 1200px;
-  height: 90%;
-  background-color: #f6fbfc;
-  border-radius: 20px;
-  padding: 40px;
+  height: 90vh;
+  background-color: transparent;
   position: relative;
-    overflow: hidden; /* ✅ 防止捲動整頁 */
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.25);
+}
+
+.modal-section-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  background-color: white;
+  border-radius: 16px;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .close-btn {
   position: absolute;
-  top: 20px;
-  right: 30px;
+  top: 16px;
+  right: 24px;
   font-size: 28px;
   background: none;
   border: none;
   color: #314D61;
   cursor: pointer;
+  z-index: 1001;
 }
+
+.spa-treatment-modal-content {
+  flex: 1;
+  height: 100vh;
+  width: 100%;
+  overflow-y: scroll;
+  /* ✅ 改為 scroll 才能上下切換各 treatment-section */
+  scroll-snap-type: y mandatory;
+  border-radius: 20px;
+  -webkit-overflow-scrolling: touch;
+  /* ✅ iOS 平滑滾動 */
+  scrollbar-width: none;
+  /* ✅ Firefox 隱藏 */
+}
+
+.spa-treatment-modal-content::-webkit-scrollbar {
+  display: none;
+  /* ✅ Chrome 隱藏 */
+}
+
+

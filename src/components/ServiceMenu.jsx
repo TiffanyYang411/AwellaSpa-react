@@ -134,20 +134,19 @@ function ServiceMenu() {
 
       {/* ✅ Modal 畫面 */}
       {isModalOpen && (
-        <div
-          className="modal-overlay"
-          onClick={(e) => {
-            if (e.target.classList.contains('modal-overlay')) {
-              closeModal(); // ✅ 改這行
-            }
-          }}
-        >
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="close-btn" onClick={closeModal}>×</button> {/* ✅ 這裡也要改 */}
-            <SpaModalPages />
-          </div>
-        </div>
-      )}
+  <div
+    className="modal-overlay"
+    onClick={closeModal} // ✅ 移除 class 判斷，整個 overlay 點擊就關閉
+  >
+    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+      <button className="close-btn" onClick={closeModal}>×</button>
+      <div className="modal-section-wrapper">
+        <SpaModalPages />
+      </div>
+    </div>
+  </div>
+)}
+
 
 
     </section>
