@@ -15,9 +15,10 @@
 .nav-button {
   background: none;
   border: none;
-  color: #314D61;
+  color: #212121;
   font-size: 14px;
-  font-weight: bold;
+  font-family: var(--font-zh);
+  font-weight: 500;
   text-align: left;
   cursor: pointer;
   padding: 6px 10px;
@@ -27,4 +28,5 @@
 
 .nav-button:hover {
   background-color: #e6eff3;
+  color: #314D61;
 }
