@@ -1,76 +1,190 @@
 /* styles/SpaModalPages.css */
-.spa-pages-container {
+/* 容器 */
+.spa-modal-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding-top: 40px;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  padding: 24px;
+  box-sizing: border-box;
+  font-family: var(--font-zh);
+}
+
+/* 麵包屑分類導航 */
+.spa-breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+  justify-content: center;
+}
+
+.spa-breadcrumbs button {
+  background: none;
+  border: none;
+  color: #555;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 4px 10px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.spa-breadcrumbs button.active,
+.spa-breadcrumbs button:hover {
+  background-color: #dce8ed;
+  color: #142E3F;
+  font-weight: bold;
+}
+
+/* 每個大類區塊 */
+.spa-page-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow: hidden;
+}
+
+.category-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #142E3F;
   text-align: center;
 }
 
-.spa-breadcrumb {
-  font-size: 14px;
-  color: #6d6d6d;
-  margin-bottom: 16px;
-  font-family: var(--font-zh);
-}
-
-.spa-page {
+.spa-content-body {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 24px;
-   opacity: 0;
-  transform: translateY(60px);
-  animation: slideUp 0.6s ease forwards;
+  flex-direction: row;
+  gap: 40px;
+  align-items: flex-start;
 }
 
-.spa-page-text h3 {
-  font-size: 24px;
-  color: #142E3F;
-  margin-bottom: 6px;
-  font-family: var(--font-zh);
-}
-
-.spa-page-text h4 {
-  font-size: 18px;
-  color: #455a64;
-  margin-bottom: 12px;
-  font-family: var(--font-zh);
-}
-
-.spa-page-text p {
-  max-width: 600px;
-  font-size: 16px;
-  line-height: 1.8;
-  color: #333;
-  font-family: var(--font-zh);
-}
-
-.spa-page-image img {
+/* 左側圖片 */
+.spa-image img {
   width: 300px;
   height: auto;
   border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
-.spa-next-btn {
-  margin-top: 24px;
-  background-color: #142E3F;
-  color: white;
-  padding: 10px 24px;
-  font-size: 16px;
-  border: none;
-  border-radius: 8px;
+/* 右側內容清單 */
+.spa-treatment-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.spa-treatment-item {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 12px;
+}
+
+.spa-treatment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  color: #314d61;
+  transition: all 0.3s ease;
 }
 
-@keyframes slideUp {
+.spa-treatment-header.expanded {
+  color: #142E3F;
+  font-weight: bold;
+}
+
+.spa-treatment-detail {
+  margin-top: 8px;
+  font-size: 15px;
+  color: #444;
+  line-height: 1.8;
+  overflow: hidden;
+  max-height: 1000px;
+  animation: expand 0.4s ease;
+}
+
+@keyframes expand {
   from {
     opacity: 0;
-    transform: translateY(60px);
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+.content-line {
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #1d3441;
+}
+
+.spa-book-btn {
+  margin-top: 16px;
+  padding: 10px 20px;
+  background-color: #142E3F;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s ease;
+}
+
+.spa-book-btn:hover {
+  background-color: #314d61;
+}
+
+/* 動畫 */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.spa-page {
+  animation: slideUp 0.5s ease;
+}
+
+/* ✅ 響應式：手機版折疊排版 */
+@media screen and (max-width: 768px) {
+  .spa-content-body {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .spa-image img {
+    width: 90%;
+    max-width: 320px;
+  }
+
+  .spa-treatment-list {
+    width: 100%;
+  }
+
+  .spa-treatment-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .category-title {
+    font-size: 20px;
+  }
+
+  .spa-book-btn {
+    width: 100%;
+    text-align: center;
   }
 }

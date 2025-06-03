@@ -10,7 +10,7 @@ const spaTreatmentsData = [
         content: ["{有機臉部深層清潔}", "{有機臉部磨砂膏}", "{有機面膜}", "{膠原蛋白臉部按摩}", "{超音波臉部按摩}"],
         description: "奢華的保濕、提拉臉部護理，結合氧氣療法、膠原蛋白與超音波技術，對抗壓力與疲憊膚質。",
         benefits: ["鬆解壓力", "提升氣場"],
-        image:`${import.meta.env.BASE_URL}images/spa1.jpg`
+        image:`${import.meta.env.BASE_URL}images/spa1_1.jpg`
       },
       {
         name: "花植能量淨化SPA",
@@ -20,7 +20,7 @@ const spaTreatmentsData = [
         content: ["{草本精華調理油}", "{有機去角質霜}", "{玫瑰石英按摩棒}"],
         description: "將天然花植能量導入身體經絡，平衡情緒與氣血循環。",
         benefits: ["舒緩自律神經", "活絡氣血"],
-        image:`${import.meta.env.BASE_URL}images/spa2.jpg`
+        image:`${import.meta.env.BASE_URL}images/spa1_2.jpg`
       },
       {
         name: "靜心花園冥想SPA",
@@ -30,7 +30,7 @@ const spaTreatmentsData = [
         content: ["{薰衣草精油}", "{洋甘菊暖石}", "{心輪音頻療癒}"],
         description: "融合芳療與音療，打造內外合一的靜心療癒空間。",
         benefits: ["深度放鬆", "舒緩焦慮"],
-        image:`${import.meta.env.BASE_URL}images/spa3.jpg`
+        image:`${import.meta.env.BASE_URL}images/spa1_3.jpg`
       }
     ]
   },
@@ -45,7 +45,7 @@ const spaTreatmentsData = [
         content: ["{紫水晶按摩棒}", "{黑曜石導引油}", "{岩鹽燈照療}"],
         description: "運用天然水晶與熱石技法，導引負能量並平衡脈輪能場。",
         benefits: ["提升正能量", "清理疲勞"],
-        image:`${import.meta.env.BASE_URL}images/spa4.jpg`
+        image:`${import.meta.env.BASE_URL}images/spa2_1.jpg`
       },
       {
         name: "金礦豐盈祝福SPA",
@@ -55,7 +55,7 @@ const spaTreatmentsData = [
         content: ["{24K黃金油}", "{金箔鎖水精華}", "{微金膜包裹療法}"],
         description: "金元素象徵豐盛與修護，打造肌膚與能量雙重豐盈。",
         benefits: ["滋養皮膚", "提升自信磁場"],
-        image:`${import.meta.env.BASE_URL}images/spa5.jpg`
+        image:`${import.meta.env.BASE_URL}images/spa2_2.jpg`
       },
       {
         name: "靈石脈輪平衡SPA",
@@ -65,7 +65,7 @@ const spaTreatmentsData = [
         content: ["{七彩脈輪精油}", "{能量石引導棒}", "{聲頻療癒碗}"],
         description: "藉由脈輪系統清理與調整，重塑內在與外在的平衡。",
         benefits: ["能量整合", "舒壓釋放"],
-        image:`${import.meta.env.BASE_URL}images/spa6.jpg`
+        image:`${import.meta.env.BASE_URL}images/spa2_3.jpg`
       }
     ]
   },
@@ -80,7 +80,7 @@ const spaTreatmentsData = [
         content: ["{艾草熱敷包}", "{迷迭香舒壓油}", "{草本精油拔罐}"],
         description: "透過傳統東方手技與草本熱敷，疏通氣血、排寒祛濕。",
         benefits: ["經絡疏通", "強化體質"],
-        image:`${import.meta.env.BASE_URL}images/spa7.jpg`
+        image:`${import.meta.env.BASE_URL}images/spa3_1.jpg`
       },
       {
         name: "雨林植物療癒SPA",
@@ -90,7 +90,7 @@ const spaTreatmentsData = [
         content: ["{尤加利精油}", "{綠茶酵素精華}", "{雨林植萃熱膜}"],
         description: "融合熱帶植物能量與濕熱療癒，修復都市疲憊肌。",
         benefits: ["消腫排毒", "補氣回春"],
-        image:`${import.meta.env.BASE_URL}images/spa8.jpg`
+        image:`${import.meta.env.BASE_URL}images/spa3_2.jpg`
       },
       {
         name: "植香脊椎調理SPA",
@@ -100,7 +100,7 @@ const spaTreatmentsData = [
         content: ["{百里香肌肉舒緩油}", "{香蜂草滾珠棒}", "{草本蒸氣毯}"],
         description: "針對脊椎與肩頸疲勞設計，專注於肌肉修復與神經放鬆。",
         benefits: ["舒緩緊繃", "重啟體力"],
-        image:`${import.meta.env.BASE_URL}images/spa9.jpg`
+        image:`${import.meta.env.BASE_URL}images/spa3_3.jpg`
       }
     ]
   },
@@ -115,7 +115,7 @@ const spaTreatmentsData = [
         content: ["{杉木精油塗抹}", "{身心同步呼吸療法}", "{森林音頻包圍}"],
         description: "結合沉靜森林音景與植物香氛，創造如走入森林般的心靈淨化儀式。",
         benefits: ["深層放鬆", "釋放焦慮"],
-        image:`${import.meta.env.BASE_URL}images/spa10.jpg`
+        image:`${import.meta.env.BASE_URL}images/spa4_1.jpg`
       },
       {
         name: "五行漢方養生SPA",
@@ -125,7 +125,7 @@ const spaTreatmentsData = [
         content: ["{艾草暖敷}", "{五行能量油}", "{拔罐調理}"],
         description: "融合中醫五行理論，透過不同草本與經絡調節達到身體能量平衡。",
         benefits: ["經絡疏通", "改善體質"],
-        image:`${import.meta.env.BASE_URL}images/spa11.jpg`
+        image:`${import.meta.env.BASE_URL}images/spa4_2.jpg`
       },
       {
         name: "溫感泥灸療程",
@@ -135,7 +135,7 @@ const spaTreatmentsData = [
         content: ["{礦泥熱敷}", "{艾草身體膜}", "{熱石脊椎鎮靜療法}"],
         description: "運用溫熱礦泥釋放深層壓力，有效舒緩寒濕與肩頸緊繃。",
         benefits: ["排寒祛濕", "促進循環"],
-        image:`${import.meta.env.BASE_URL}images/spa12.jpg`
+        image:`${import.meta.env.BASE_URL}images/spa4_3.jpg`
       }
     ]
   },
@@ -150,7 +150,7 @@ const spaTreatmentsData = [
         content: ["{玫瑰花瓣浴}", "{依蘭香氣淨化}", "{水晶香氛油}"],
         description: "運用玫瑰、茉莉與香氣結合，從頭至腳釋放情緒與壓力，為靈魂洗滌。",
         benefits: ["情緒釋放", "提升女性能量"],
-        image:`${import.meta.env.BASE_URL}images/spa13.jpg`
+        image:`${import.meta.env.BASE_URL}images/spa5_1.jpg`
       },
       {
         name: "水氧光感SPA",
@@ -160,7 +160,7 @@ const spaTreatmentsData = [
         content: ["{尤加利精油}", "{綠茶酵素精華}", "{雨林植萃熱膜}"],
         description: "融合熱帶植物能量與濕熱療癒，修復都市疲憊肌。",
         benefits: ["消腫排毒", "補氣回春"],
-        image:`${import.meta.env.BASE_URL}images/spa14.jpg`
+        image:`${import.meta.env.BASE_URL}images/spa5_2.jpg`
       },
       {
         name: "香氛泡浴+身體滋養",
@@ -170,10 +170,11 @@ const spaTreatmentsData = [
         content: ["{洋甘菊泡浴}", "{海鹽磨砂}", "{乳木果體膜}"],
         description: "全身水療與滋養同步，泡浴過後進行深層潤膚，肌膚即刻柔嫩光滑。",
         benefits: ["去角質", "美體滋養"],
-        image:`${import.meta.env.BASE_URL}images/spa15.jpg`
+        image:`${import.meta.env.BASE_URL}images/spa5_3.jpg`
       }
     ]
   }
 ];
 
 export default spaTreatmentsData;
+

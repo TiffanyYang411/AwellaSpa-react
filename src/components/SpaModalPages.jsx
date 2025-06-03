@@ -1,95 +1,100 @@
 // components/SpaModalPages.jsx
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import spaTreatmentsData from '../data/spaTreatmentsData';
 import '../styles/SpaModalPages.css';
 
-const pages = [
-    {
-        title: '芳香背部舒壓',
-        subtitle: '釋放壓力的第一站',
-        description: '以溫熱芳香精油深入肌理，結合放鬆手技，舒緩肩頸與背部緊繃，開啟深層療癒儀式。',
-        image: 'images/spa1.jpg',
-    },
-    {
-        title: '能量熱石按摩',
-        subtitle: '溫熱石引導能量流動',
-        description: '使用玄武岩熱石交替手技，促進氣血循環與肌肉放鬆，調理身心能量平衡。',
-        image: 'images/spa2.jpg',
-    },
-    {
-        title: '草本腿部排毒',
-        subtitle: '輕盈每一步',
-        description: '選用草本精華油與淋巴引流手法，排除水腫與老廢物質，喚醒雙腿輕盈感。',
-        image: 'images/spa3.jpg',
-    },
-    {
-        title: '頭部經絡舒壓',
-        subtitle: '重啟思緒的清新按鍵',
-        description: '刺激頭皮與穴位，舒緩壓力、提升睡眠品質，放鬆來自大腦的疲憊。',
-        image: 'images/spa4.jpg',
-    },
-    {
-        title: '全身平衡療癒',
-        subtitle: '收攏身心，回歸平衡',
-        description: '整合全身按摩手法與香氣療癒，達到內外同步淨化與深度放鬆。',
-        image: 'images/spa5.jpg',
-    },
-];
-
-
 function SpaModalPages() {
-    const [current, setCurrent] = useState(0);
-    const containerRef = useRef(null);
-    const isScrolling = useRef(false); // ✅ 防止連續觸發
-    const page = pages[current];
-    if (!page) return null; // ✅ 避免 undefined 錯誤
+  const [currentCategoryIndex, setCurrentCategoryIndex] = useState(0);
+  const [expandedTreatmentIndex, setExpandedTreatmentIndex] = useState(0);
+  const containerRef = useRef(null);
+  const isScrolling = useRef(false);
 
-    const handleWheel = (e) => {
-        if (isScrolling.current) return;
-        isScrolling.current = true;
+  const currentCategory = spaTreatmentsData[currentCategoryIndex];
+  const treatments = currentCategory.treatments;
 
-        const direction = e.deltaY > 0 ? 1 : -1;
-        const nextIndex = current + direction;
+  const handleWheel = (e) => {
+    if (isScrolling.current) return;
+    isScrolling.current = true;
 
-        if (nextIndex >= 0 && nextIndex < pages.length) {
-            setCurrent(nextIndex);
-        }
+    const direction = e.deltaY > 0 ? 1 : -1;
+    const nextIndex = currentCategoryIndex + direction;
 
-        setTimeout(() => {
-            isScrolling.current = false;
-        }, 800);
+    if (nextIndex >= 0 && nextIndex < spaTreatmentsData.length) {
+      setCurrentCategoryIndex(nextIndex);
+      setExpandedTreatmentIndex(0); // 切換大類時預設展開第一個
+    }
+
+    setTimeout(() => {
+      isScrolling.current = false;
+    }, 800);
+  };
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (container) {
+      container.addEventListener('wheel', handleWheel, { passive: false });
+    }
+    return () => {
+      if (container) {
+        container.removeEventListener('wheel', handleWheel);
+      }
     };
+  }, [currentCategoryIndex]);
 
+  return (
+    <div className="spa-modal-container" ref={containerRef}>
+      <div className="spa-breadcrumbs">
+        {spaTreatmentsData.map((cat, index) => (
+          <button
+            key={index}
+            className={index === currentCategoryIndex ? 'active' : ''}
+            onClick={() => {
+              setCurrentCategoryIndex(index);
+              setExpandedTreatmentIndex(0);
+            }}
+          >
+            {cat.category}
+          </button>
+        ))}
+      </div>
 
-    useEffect(() => {
-        const container = containerRef.current;
-        if (container) {
-            container.addEventListener('wheel', handleWheel, { passive: false });
-        }
+      <div className="spa-page-content">
+        <h2 className="category-title">{currentCategory.category}</h2>
+        <div className="spa-content-body">
+          <div className="spa-image">
+            <img src={treatments[expandedTreatmentIndex].image} alt={treatments[expandedTreatmentIndex].name} />
+          </div>
 
-        return () => {
-            if (container) {
-                container.removeEventListener('wheel', handleWheel);
-            }
-        };
-    }, [current]);
-
-    return (
-        <div className="spa-pages-container" ref={containerRef}>
-            <div className="spa-breadcrumb">{`${current + 1} / ${pages.length}`}</div>
-            <div className="spa-page slide-up" key={current}>
-                <div className="spa-page-text">
-                    <h3>{page.title}</h3>
-                    <h4>{page.subtitle}</h4>
-                    <p>{page.description}</p>
+          <div className="spa-treatment-list">
+            {treatments.map((treat, idx) => (
+              <div key={idx} className="spa-treatment-item">
+                <div
+                  className={`spa-treatment-header ${idx === expandedTreatmentIndex ? 'expanded' : ''}`}
+                  onClick={() => setExpandedTreatmentIndex(idx)}
+                >
+                  <h3>{treat.name}</h3>
+                  <span>{treat.time} ｜ {treat.price}</span>
                 </div>
-                <div className="spa-page-image">
-                    <img src={`${import.meta.env.BASE_URL}${page.image}`} alt={page.title} />
-                </div>
-            </div>
+
+                {idx === expandedTreatmentIndex && (
+                  <div className="spa-treatment-detail">
+                    <p className="content-line">{treat.content.join(' ')}</p>
+                    <p><strong>療程步驟：</strong>{treat.steps.join(' → ')}</p>
+                    <p><strong>療程描述：</strong>{treat.description}</p>
+                    <p><strong>功效：</strong>{treat.benefits.join('、')}</p>
+                    <button className="spa-book-btn">我要預約</button>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
-    );
-
+      </div>
+    </div>
+  );
 }
 
 export default SpaModalPages;
+
+
 
