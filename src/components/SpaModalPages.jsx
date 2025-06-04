@@ -5,7 +5,7 @@ import TreatmentSection from './TreatmentSection';
 import '../styles/TreatmentSection.css';
 import '../styles/Modal.css';
 
-function SpaModalPages({ activeIndex, setActiveIndex }) {
+function SpaModalPages({ activeIndex, setActiveIndex, onReserve }) {
   return (
     <div className="modal-section-wrapper">
       <div className="spa-treatment-modal-content">
@@ -16,6 +16,7 @@ function SpaModalPages({ activeIndex, setActiveIndex }) {
             categoryData={section}
             bgClass={`bg-style-${index}`}
             onVisible={() => setActiveIndex(index)}
+            onReserve={onReserve}
           />
         ))}
       </div>
@@ -24,6 +25,7 @@ function SpaModalPages({ activeIndex, setActiveIndex }) {
 }
 
 export default SpaModalPages;
+
 
 
 

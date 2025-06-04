@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import "../styles/TreatmentDetailCard.css";
 
-function TreatmentDetailCard({ data, isActive, onClick }) {
+function TreatmentDetailCard({ data, isActive, onClick, onReserve }) {
   const { name, time, price, steps, content, description, benefits } = data;
   const bodyRef = useRef(null);
   const [bodyHeight, setBodyHeight] = useState(0);
@@ -70,7 +70,7 @@ function TreatmentDetailCard({ data, isActive, onClick }) {
             </ul>
           </div>
 
-          <button className="reserve-btn">我要預約</button>
+          <button className="reserve-btn" onClick={() => onReserve(name)}>我要預約</button>
         </div>
       </div>
     </div>

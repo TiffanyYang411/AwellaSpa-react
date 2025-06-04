@@ -6,7 +6,7 @@ import '../styles/FooterSection.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
-function FooterSection() {
+function FooterSection({ onReserveClick }) {
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
   const contentRef = useRef(null);
@@ -100,7 +100,7 @@ function FooterSection() {
           Awella Spa 陪你走過放鬆與煥新的旅程，<br />
           每一刻，都是獨一無二的溫柔體驗。
         </p>
-        <button className="footer-btn">我要預約</button>
+        <button className="footer-btn" onClick={onReserveClick}>我要預約</button>
       </div>
 
       <div className="footer-copyright" ref={footerRef}>

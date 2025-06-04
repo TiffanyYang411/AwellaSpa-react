@@ -1,0 +1,181 @@
+/* BookingModal.css */
+
+.booking-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(18, 18, 18, 0.3); /* 深色透明背景 */
+  backdrop-filter: blur(10px);             /* ✅ 加上背景模糊 */
+  -webkit-backdrop-filter: blur(10px);      /* Safari 相容性 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+
+  /* 初始狀態為透明，給 GSAP 使用 */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.booking-modal-overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.booking-modal {
+  width: 90vw;
+  max-width: 1650px;
+  height: 90vh;
+  background-image: url('/images/booking-bg.jpg'); /* ⛔ 請換成你實際背景圖片路徑 */
+  background-size: cover;
+  background-position: center;
+  border-radius: 24px;
+  padding: 30px 160px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  position: relative;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: none; /* 防止與 GSAP 衝突 */
+  position: relative; /* ✅ 讓 ::before 可定位 */
+  z-index: 1; /* 確保內容在最上層 */
+}
+
+
+.sub-title {
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 10px;
+  color: #314D61;
+  font-family: 'LXGW WenKai TC', sans-serif; /* 中文副標字型 */
+  letter-spacing: 0.06em;
+}
+
+.sub-title-2 {
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 40px;
+  color: #314D61;
+  font-family: 'LXGW WenKai TC', sans-serif; /* 中文副標字型 */
+  letter-spacing: 0.06em;
+}
+
+.booking-modal h2 {
+  font-size: 0; /* 清除原本大小 */
+  text-align: center;
+  margin-bottom: 0px;
+  color: #314D61;
+}
+
+.booking-modal h2::before {
+  content: 'Awella Spa ';
+  font-family: 'Piazzolla', serif;
+  font-size: 60px;
+}
+
+.booking-modal h2::after {
+  content: '預約療程';
+  font-family: 'LXGW WenKai TC', sans-serif;
+  font-size: 56px;
+  margin-left: 0px;
+  letter-spacing: 0.06em;
+}
+
+.close-btn {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  font-size: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #1a2c38;
+}
+
+.booking-form {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.form-col {
+  flex: 1 1 45%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+label {
+  font-size: 16px;
+  font-weight: 500;
+  color: #314D61;
+  margin-left: 6px;
+  letter-spacing: 0.06em;
+}
+
+.required {
+  color: red;
+  margin-left: 4px;
+}
+
+input,
+select,
+textarea {
+  border: 1px solid #cfd8dc;
+  border-radius: 24px;
+  padding: 12px 18px;
+  font-size: 15px;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(6px);
+  transition: all 0.3s ease;
+  letter-spacing: 0.06em;
+  font-family: 'LXGW WenKai TC', sans-serif;
+  color: #314D61;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #314D61;
+  box-shadow: 0 0 0 2px rgba(49, 77, 97, 0.1);
+}
+
+textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.submit-btn {
+  font-family: 'LXGW WenKai TC', sans-serif;
+  margin: 10px auto 0;
+  padding: 14px 40px;
+  font-size: 16px;
+  border-radius: 40px;
+  background-color: #314D61;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  letter-spacing: 0.06em;
+}
+
+.submit-btn:hover {
+  background-color: #45697a;
+}
+
+@media (max-width: 768px) {
+  .booking-form {
+    flex-direction: column;
+    gap: 32px;
+  }
+  .form-col {
+    width: 100%;
+  }
+}

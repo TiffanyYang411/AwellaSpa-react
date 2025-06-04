@@ -1,9 +1,10 @@
+//Navbar.jsx
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import '../styles/Navbar.css';
 
-function Navbar() {
+function Navbar({ onReserveClick }) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
@@ -33,46 +34,46 @@ function Navbar() {
 
     // ✅ scrollSpy 功能：觀察畫面中哪個區塊正在顯示
     useEffect(() => {
-  const sections = [
-    'brand-intro',
-    'service-menu',
-    'gallery-section-wrapper',
-    'scroll-treatment',
-  ];
+        const sections = [
+            'brand-intro',
+            'service-menu',
+            'gallery-section-wrapper',
+            'scroll-treatment',
+        ];
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      const visibleEntries = entries.filter(e => e.isIntersecting);
-      if (visibleEntries.length > 0) {
-        const mostVisible = visibleEntries.reduce((prev, curr) =>
-          prev.intersectionRatio > curr.intersectionRatio ? prev : curr
+        const observer = new IntersectionObserver(
+            (entries) => {
+                const visibleEntries = entries.filter(e => e.isIntersecting);
+                if (visibleEntries.length > 0) {
+                    const mostVisible = visibleEntries.reduce((prev, curr) =>
+                        prev.intersectionRatio > curr.intersectionRatio ? prev : curr
+                    );
+
+                    // ✅ 加入這一段條件，避免重複觸發動畫
+                    if (mostVisible.target.id !== activeSection) {
+                        setActiveSection(mostVisible.target.id);
+                    }
+                } else {
+                    if (activeSection !== '') setActiveSection('');
+                }
+            },
+            {
+                threshold: [0.2, 0.4, 0.6], // 可根據實際視覺調整
+            }
         );
 
-        // ✅ 加入這一段條件，避免重複觸發動畫
-        if (mostVisible.target.id !== activeSection) {
-          setActiveSection(mostVisible.target.id);
-        }
-      } else {
-        if (activeSection !== '') setActiveSection('');
-      }
-    },
-    {
-      threshold: [0.2, 0.4, 0.6], // 可根據實際視覺調整
-    }
-  );
+        sections.forEach((id) => {
+            const el = document.getElementById(id);
+            if (el) observer.observe(el);
+        });
 
-  sections.forEach((id) => {
-    const el = document.getElementById(id);
-    if (el) observer.observe(el);
-  });
-
-  return () => {
-    sections.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.unobserve(el);
-    });
-  };
-}, [activeSection]); // ✅ 把 activeSection 放進 dependency 中
+        return () => {
+            sections.forEach((id) => {
+                const el = document.getElementById(id);
+                if (el) observer.unobserve(el);
+            });
+        };
+    }, [activeSection]); // ✅ 把 activeSection 放進 dependency 中
 
 
 
@@ -132,7 +133,9 @@ function Navbar() {
                 </div>
 
                 <div className="navbar-booking">
-                    <Link to="/booking" className="reserve-button">我要預約</Link>
+                    <button className="reserve-button" onClick={() => onReserveClick?.()}>
+                        我要預約
+                    </button>
                 </div>
 
                 <div className="hamburger-icon" onClick={handleToggleMenu}>
@@ -180,7 +183,7 @@ function Navbar() {
                         </button>
                     </li>
                     <li>
-                        <button onClick={() => { scrollToSection('hero-section'); handleCloseMenu(); }} className="mobile-reserve">
+                        <button className="reserve-button" onClick={() => openBookingModal()}>
                             我要預約
                         </button>
                     </li>

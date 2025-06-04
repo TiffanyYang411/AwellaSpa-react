@@ -1,3 +1,4 @@
+/* ServiceMenu.css */
 .service-menu-section {
     width: 100%;
     height: 100vh;
@@ -72,10 +73,12 @@
     /* ✅ 原本如果是 bold 可改為 600 或 500 */
 }
 
-.sub-title {
+.sub-title-1 {
     font-size: 22px;
     color: var(--color-text);
-    margin-bottom: 0x;
+    margin-bottom: 3px; /* ✅ 用 px 單位 */
+    letter-spacing: 0.05em; /* ✅ 可加上讓文字更有質感 */
+    font-family: var(--font-zh); /* 保持一致 */
 }
 
 .description {

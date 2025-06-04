@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import TreatmentDetailCard from './TreatmentDetailCard';
 import '../styles/TreatmentSection.css';
 
-function TreatmentSection({ categoryData, sectionId, bgClass = '', onVisible }) {
+function TreatmentSection({ categoryData, sectionId, bgClass = '', onVisible, onReserve }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const sectionRef = useRef(null);
   const { category, treatments } = categoryData;
@@ -54,6 +54,9 @@ function TreatmentSection({ categoryData, sectionId, bgClass = '', onVisible }) 
                 data={treatment}
                 isActive={index === activeIndex}
                 onClick={() => setActiveIndex(index)}
+                onReserve={(treatmentName) => {
+                  onReserve?.(`${category} - ${treatmentName}`);
+                }}
               />
             ))}
           </div>

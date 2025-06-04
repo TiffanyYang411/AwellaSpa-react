@@ -8,12 +8,21 @@ import facialTreatmentsData from '../data/facialTreatmentsData';
 import SpaModalPages from '../components/SpaModalPages';
 import FacialModalPages from '../components/FacialModalPages';
 import TreatmentCategoryNav from '../components/TreatmentCategoryNav';
+import BookingModal from '../components/BookingModal';
 import gsap from 'gsap';
 
 function ServiceMenu() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isFacialModalOpen, setIsFacialModalOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const [presetTreatment, setPresetTreatment] = useState(null);
+
+  const openBooking = (treatmentName = null) => {
+    setPresetTreatment(treatmentName);
+    setIsBookingOpen(true);
+  };
+
   const modalContentRef = useRef(null);
 
   const openModal = () => {
@@ -140,7 +149,7 @@ function ServiceMenu() {
       <div className="service-card-wrapper">
         <div className="service-card slide-card slide-left">
           <h3>嚴選SPA療程</h3>
-          <p className="sub-title">為您打造無聲的療癒語言</p>
+          <p className="sub-title-1">為您打造無聲的療癒語言</p>
           <p className="description">
             匯集世界各地芳療靈感與手技傳承，搭配有機植物精油與情境香氛，從背部、肩頸至頭部穴位釋壓，全方位釋放壓⼒與疲憊。這不只是一場按摩，更是一段為自己保留的靜心旅程，讓每個深層觸碰，都成為與自我對話的儀式。
           </p>
@@ -149,7 +158,7 @@ function ServiceMenu() {
         </div>
         <div className="service-card slide-card slide-right">
           <h3>肌膚管理療程</h3>
-          <p className="sub-title">讓美麗從細節開始發光</p>
+          <p className="sub-title-1">讓美麗從細節開始發光</p>
           <p className="description">
             以深層清潔、膠原修護、亮白滋潤為核心，結合高效保養成分與科技⼿法如超音波導入、氧氣療法，量身打造每一吋肌膚的專屬呵護。從潔淨、修護到喚醒肌膚活力，層層堆疊，重現自然透亮的光采感。
           </p>
@@ -187,13 +196,28 @@ function ServiceMenu() {
               </svg>
             </button>
             {isModalOpen ? (
-              <SpaModalPages activeIndex={activeIndex} setActiveIndex={setActiveIndex} />
+              <SpaModalPages
+                activeIndex={activeIndex}
+                setActiveIndex={setActiveIndex}
+                onReserve={openBooking}
+              />
+
             ) : (
-              <FacialModalPages activeIndex={activeIndex} setActiveIndex={setActiveIndex} />
+              <FacialModalPages
+                activeIndex={activeIndex}
+                setActiveIndex={setActiveIndex}
+                onReserve={openBooking}
+              />
             )}
           </div>
         </div>
       )}
+
+      <BookingModal
+        isOpen={isBookingOpen}
+        onClose={() => setIsBookingOpen(false)}
+        preSelectedTreatment={presetTreatment}
+      />
     </section>
   );
 }
