@@ -26,7 +26,7 @@ function SuccessModal({ isOpen, onClose }) {
             <div className="success-modal" ref={modalRef}>
                 <h1 className="brand-title">Awella Spa</h1>
                 <p className="success-title">預約成功！</p>
-                <p className="success-message">我們已收到您的預約，專人將於24小時內與您聯繫。</p>
+                <p className="success-message">我們已收到您的預約，專人將於24小時內與您聯繫</p>
                 <p className="success-code">預約編號：AWS20250613001</p>
             </div>
         </div>
