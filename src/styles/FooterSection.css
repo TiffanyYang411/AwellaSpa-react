@@ -12,6 +12,7 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    background-attachment: fixed;
 }
 
 /* 頂部英文字母動畫 */

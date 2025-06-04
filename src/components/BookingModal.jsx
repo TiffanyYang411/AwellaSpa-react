@@ -1,20 +1,32 @@
-// BookingModal.jsx (已依照你給的樣式調整)
 import React, { useEffect, useRef, useState } from 'react';
 import '../styles/BookingModal.css';
 import { gsap } from 'gsap';
+import SuccessModal from './SuccessModal';
 
 function BookingModal({ isOpen, onClose, preSelectedTreatment }) {
     const [selectedTreatment, setSelectedTreatment] = useState('');
     const [selectedTime, setSelectedTime] = useState('10:00 AM');
     const [contactMethod, setContactMethod] = useState('電話聯絡');
     const [visible, setVisible] = useState(false); // 控制實際 render
+    const [isSuccessOpen, setIsSuccessOpen] = useState(false); // 成功動畫跳窗
     const modalRef = useRef();
     const overlayRef = useRef();
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setIsSuccessOpen(true); // 顯示成功動畫
+    };
+
     // 預設療程處理
-    useEffect(() => {
-        setSelectedTreatment(preSelectedTreatment || '');
-    }, [preSelectedTreatment]);
+    // 修正後的版本：只有在有預設值且 modal 是打開的狀況才套用
+useEffect(() => {
+    if (preSelectedTreatment && isOpen) {
+        setSelectedTreatment(preSelectedTreatment);
+    } else if (isOpen) {
+        setSelectedTreatment('');
+    }
+}, [preSelectedTreatment, isOpen]);
+
 
     // 處理動畫開關
     useEffect(() => {
@@ -63,7 +75,7 @@ function BookingModal({ isOpen, onClose, preSelectedTreatment }) {
                 <p className="sub-title">喚醒感官・喚醒美麗・從這裡開始</p>
                 <p className="sub-title-2">請填寫以下資料，為自己預約一段專屬於您的療癒時光</p>
 
-                <form className="booking-form">
+                <form className="booking-form" onSubmit={handleSubmit}>
                     <div className="form-col">
                         <label>您的大名<span className="required">*</span></label>
                         <input type="text" placeholder="請輸入您的姓名" required />
@@ -81,7 +93,7 @@ function BookingModal({ isOpen, onClose, preSelectedTreatment }) {
                     <div className="form-col">
                         <label>選擇療程類別<span className="required">*</span></label>
                         <select value={selectedTreatment} onChange={(e) => setSelectedTreatment(e.target.value)} required>
-                            <option value="">請選擇一種療程</option>
+                            <option value="" disabled hidden>請選擇一種療程</option>
                             <option value="神聖花植儀式SPA - 神聖花植精油SPA">神聖花植儀式SPA - 神聖花植精油SPA</option>
                             <option value="神聖花植儀式SPA - 花植能量淨化SPA">神聖花植儀式SPA - 花植能量淨化SPA</option>
                             <option value="神聖花植儀式SPA - 靜心花園冥想SPA">神聖花植儀式SPA - 靜心花園冥想SPA</option>
@@ -131,6 +143,10 @@ function BookingModal({ isOpen, onClose, preSelectedTreatment }) {
                         <select value={contactMethod} onChange={(e) => setContactMethod(e.target.value)} required>
                             <option value="電話聯絡">電話聯絡</option>
                             <option value="Email 聯絡">Email 聯絡</option>
+                            <option value="Line 聯絡">Line 聯絡</option>
+                            <option value="WhatsApp 聯絡">WhatsApp 聯絡</option>
+                            <option value="WeChat 聯絡">WeChat 聯絡</option>
+                            <option value="Facebook Messenger 聯絡">Facebook Messenger 聯絡</option>
                         </select>
 
                         <label>任何個人偏好或需求</label>
@@ -139,11 +155,15 @@ function BookingModal({ isOpen, onClose, preSelectedTreatment }) {
 
                     <button type="submit" className="submit-btn">我要預約</button>
                 </form>
+
+                <SuccessModal isOpen={isSuccessOpen} onClose={() => setIsSuccessOpen(false)} />
             </div>
         </div>
     );
 }
 
 export default BookingModal;
+
+
 
 

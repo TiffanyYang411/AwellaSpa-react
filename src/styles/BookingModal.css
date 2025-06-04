@@ -69,7 +69,7 @@
 .booking-modal h2 {
   font-size: 0; /* 清除原本大小 */
   text-align: center;
-  margin-bottom: 0px;
+  margin-bottom: 5px;
   color: #314D61;
 }
 
@@ -86,6 +86,7 @@
   margin-left: 0px;
   letter-spacing: 0.06em;
 }
+
 
 .close-btn {
   position: absolute;
@@ -179,3 +180,24 @@ textarea {
     width: 100%;
   }
 }
+
+/* 自訂 select 樣式（適用於所有 select） */
+/* 自訂 select 下拉箭頭，使用 inline SVG */
+.booking-form select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding-right: 48px;
+  background-image: url("data:image/svg+xml,%3Csvg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23314D61' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 14px;
+  cursor: pointer;
+}
+
+/* Safari 補丁 */
+.booking-form select::-ms-expand {
+  display: none;
+}
+

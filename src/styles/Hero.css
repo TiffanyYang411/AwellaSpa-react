@@ -8,6 +8,7 @@
   position: relative;
   overflow: hidden;
   /* ✅ 確保遮罩不會溢出 */
+  background-attachment: fixed;
 }
 
 .hero-content {

@@ -115,18 +115,18 @@ function Navbar({ onReserveClick }) {
                     <ul className="navbar-menu">
                         <li>
                             <button
-                                className={`link-button ${activeSection === 'gallery-section-wrapper' ? 'active' : ''}`}
-                                onClick={() => scrollToSection('gallery-section-wrapper')}
-                            >
-                                靜謐拾光
-                            </button>
-                        </li>
-                        <li>
-                            <button
                                 className={`link-button ${activeSection === 'scroll-treatment' ? 'active' : ''}`}
                                 onClick={() => scrollToSection('scroll-treatment')}
                             >
                                 療癒綻放
+                            </button>
+                        </li>
+                        <li>
+                            <button
+                                className={`link-button ${activeSection === 'gallery-section-wrapper' ? 'active' : ''}`}
+                                onClick={() => scrollToSection('gallery-section-wrapper')}
+                            >
+                                靜謐拾光
                             </button>
                         </li>
                     </ul>
@@ -168,18 +168,18 @@ function Navbar({ onReserveClick }) {
                     </li>
                     <li>
                         <button
-                            className={`link-button ${activeSection === 'gallery-section-wrapper' ? 'active' : ''}`}
-                            onClick={() => { scrollToSection('gallery-section-wrapper'); handleCloseMenu(); }}
-                        >
-                            靜謐拾光
-                        </button>
-                    </li>
-                    <li>
-                        <button
                             className={`link-button ${activeSection === 'scroll-treatment' ? 'active' : ''}`}
                             onClick={() => { scrollToSection('scroll-treatment'); handleCloseMenu(); }}
                         >
                             療癒綻放
+                        </button>
+                    </li>
+                    <li>
+                        <button
+                            className={`link-button ${activeSection === 'gallery-section-wrapper' ? 'active' : ''}`}
+                            onClick={() => { scrollToSection('gallery-section-wrapper'); handleCloseMenu(); }}
+                        >
+                            靜謐拾光
                         </button>
                     </li>
                     <li>

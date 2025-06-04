@@ -1,9 +1,23 @@
 .testimonial-section {
     height: 100vh;
-    background-color: #D8E4E5;
+    background-image: url('/images/testimonial-bg.png'); /* ✅ 圖片路徑請替換為實際路徑 */
     padding: 80px 20px;
     position: relative;
     overflow: hidden;
+    background-attachment: fixed;
+}
+
+.testimonial-section {
+  width: 100%;
+  min-height: 100vh;
+  background-image: url('/images/testimonial-bg.png'); /* ✅ 圖片路徑請替換為實際路徑 */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  padding: 100px 40px;
+  box-sizing: border-box;
+  background-attachment: fixed;
 }
 
 .testimonial-section .zh-title {
