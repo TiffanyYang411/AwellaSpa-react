@@ -33,7 +33,7 @@
   background-size: cover;
   background-position: center;
   border-radius: 24px;
-  padding: 0px 180px 0px 180px;
+  padding: 0px 200px 0px 200px;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(12px);
   display: flex;
@@ -122,12 +122,12 @@
 
 /* 左欄靠右留間距，中間距離 */
 .form-col:first-child {
-  padding-right: 24px; /* ✅ 控制中間間距（你想要留的） */
+  padding-left: 75px; /* ✅ 控制中間間距（你想要留的） */
 }
 
 /* 右欄緊貼右邊界（不要多留） */
 .form-col:last-child {
-  padding-left: 0; /* ✅ 取消右邊多出來的空間 */
+  padding-left: 75px; /* ✅ 取消右邊多出來的空間 */
 }
 
 label {
