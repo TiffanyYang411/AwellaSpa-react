@@ -120,7 +120,7 @@ function ServiceMenu() {
           }
         });
       },
-      { threshold: 0.3, rootMargin: '0px 0px -50% 0px' }
+      { threshold: 0.3, rootMargin: '0px 0px -40% 0px' }
     );
     cards.forEach((el) => observer.observe(el));
     const title = document.querySelector('.fade-title');
