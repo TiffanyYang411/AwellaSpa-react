@@ -130,38 +130,39 @@
 /* === 初始狀態：旋轉並隱藏 === */
 /* === 共用卡片初始樣式 === */
 .slide-card {
-    opacity: 0;
-    transform-style: preserve-3d;
-    transition: transform 1s ease, opacity 1s ease;
+  opacity: 0;
+  transform-style: preserve-3d;
+  transform: perspective(1000px) scale(0.96) rotateY(30deg);
+  transition: transform 0.9s cubic-bezier(0.25, 0.8, 0.25, 1), 
+              opacity 0.9s cubic-bezier(0.25, 0.8, 0.25, 1);
+  will-change: transform, opacity;
 }
 
-/* 初始翻開角度 + delay */
+/* 左右滑入初始狀態 */
 .slide-left {
-    transform: rotateY(-90deg);
-    transition-delay: 0.1s;
+  transform: perspective(1000px) scale(0.96) rotateY(-30deg);
 }
 
 .slide-right {
-    transform: rotateY(90deg);
-    transition-delay: 0.4s;
+  transform: perspective(1000px) scale(0.96) rotateY(30deg);
 }
 
-/* 滾入時的動畫 */
+/* 滾入畫面時的動畫 */
 .slide-in {
-    opacity: 1;
-    transform: rotateY(0deg);
-    transition-delay: 0s !important;
+  opacity: 1;
+  transform: perspective(1000px) scale(1) rotateY(0deg);
+  transition-delay: 0s !important;
 }
 
 /* 滾出時翻回角度 */
 .slide-out-left {
-    opacity: 0;
-    transform: rotateY(-90deg);
+  opacity: 0;
+  transform: perspective(1000px) scale(0.96) rotateY(-30deg);
 }
 
 .slide-out-right {
-    opacity: 0;
-    transform: rotateY(90deg);
+  opacity: 0;
+  transform: perspective(1000px) scale(0.96) rotateY(30deg);
 }
 
 @keyframes fadeUp {
