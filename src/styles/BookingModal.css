@@ -33,7 +33,7 @@
   background-size: cover;
   background-position: center;
   border-radius: 24px;
-  padding: 30px 160px;
+  padding: 0px 160px;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(12px);
   display: flex;
@@ -60,7 +60,7 @@
 .sub-title-2 {
   font-size: 16px;
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   color: #314D61;
   font-family: 'LXGW WenKai TC', sans-serif; /* 中文副標字型 */
   letter-spacing: 0.06em;
@@ -75,7 +75,7 @@
 
 .booking-modal h2::before {
   content: 'Awella Spa ';
-  font-family: 'Piazzolla', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 60px;
 }
 
@@ -101,7 +101,7 @@
 
 .booking-form {
   display: flex;
-  gap: 40px;
+  gap: 25px;
   flex-wrap: wrap;
 }
 
@@ -174,7 +174,7 @@ textarea {
 @media (max-width: 768px) {
   .booking-form {
     flex-direction: column;
-    gap: 32px;
+    gap: 20px;
   }
   .form-col {
     width: 100%;

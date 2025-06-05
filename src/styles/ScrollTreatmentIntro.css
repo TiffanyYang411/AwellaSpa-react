@@ -1,4 +1,3 @@
-/* ScrollTreatmentIntro.css */
 .treatment-section {
   width: 100%;
   scroll-snap-type: y mandatory;
@@ -28,8 +27,8 @@
 
 .treatment-info {
   position: absolute;
-  top: 25%; /* ✅ 上移一點 */
-  right: 6%; /* ✅ 改成靠右對齊 */
+  top: 25%;
+  right: 6%;
   transform: translateY(-50%);
   background: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(12px);
@@ -38,7 +37,7 @@
   border-radius: 16px;
   max-width: 360px;
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  z-index: 2;
 }
 
 .treatment-info h3 {
@@ -66,64 +65,68 @@
   z-index: 2;
 }
 
-.treatment-line {
+.treatment-dot::after {
+  content: "";
   position: absolute;
-  width: 350px;
-  transform: rotate(-210deg); /* ✅ 產生角度感 */
-  height: 1px;
-  background: none;
-  border-top: 2px dashed rgba(255, 255, 255, 0.8);
-  z-index: 1;
-  top: 58%;
-  left: 48%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: white;
+  opacity: 0.6;
+  animation: pulse-glow 2s infinite ease-out;
+  z-index: -1;
 }
 
-/* ✅ 背部圖卡片定位 */
+.connection-line {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.connection-line line {
+  stroke: white;
+  stroke-width: 2;
+  stroke-dasharray: 12 6; /* ✅ 實際虛線段長度 */
+  stroke-dashoffset: 240; /* ✅ 假設畫 20 段 (12+6)*20 = 240px */
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1.8s ease-in-out 0.4s;
+}
+
+.connection-line line.animate {
+  stroke-dashoffset: 0;
+}
+
+
+/* 背部卡片位置 */
 .treatment-block.back .treatment-info {
   top: 50%;
   left: 67.2%;
 }
 
-.treatment-block.back .treatment-dot,
-.treatment-block.back .treatment-line {
-  top: 60%;
-  left: 50%;
-}
-
-/* ✅ 臉部圖卡片定位 */
+/* 臉部卡片位置 */
 .treatment-block.face .treatment-info {
   top: 35%;
   left: 72.2%;
 }
 
-.treatment-block.face .treatment-dot,
-.treatment-block.face .treatment-line {
-  top: 45%;
-  left: 55%;
-}
-
-.service-btn {
-  display: inline-block;
-  padding: 14px 50px;
-  font-size: 16px;
-  color: #314D61; /* ✅ 保留原本深藍色文字 */
-  font-family: var(--font-zh);
-  letter-spacing: 0.06em;
-  line-height: 1.5;
-  text-decoration: none;
-  border-radius: 30px;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.7));
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-
-  box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.25), 0 4px 12px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.service-btn:hover {
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 1));
-  box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.3), 0 6px 16px rgba(0, 0, 0, 0.25);
+@keyframes pulse-glow {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.6;
+  }
+  70% {
+    transform: translate(-50%, -50%) scale(2.4);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2.4);
+    opacity: 0;
+  }
 }
