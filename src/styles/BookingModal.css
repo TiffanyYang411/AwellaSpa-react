@@ -33,7 +33,7 @@
   background-size: cover;
   background-position: center;
   border-radius: 24px;
-  padding: 0px 160px;
+  padding: 0px 180px 0px 180px;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(12px);
   display: flex;
@@ -47,6 +47,13 @@
   z-index: 1; /* 確保內容在最上層 */
 }
 
+.form-col input,
+.form-col select,
+.form-col textarea {
+  max-width: 100%; /* 預設最大寬度不超出容器 */
+  width: 85%;       /* ✅ 實際寬度你可以自訂，例如 85%、400px、30rem 都行 */
+  align-self: flex-start; /* ✅ 讓欄位靠左對齊 */
+}
 
 .sub-title {
   font-size: 20px;
@@ -101,15 +108,26 @@
 
 .booking-form {
   display: flex;
-  gap: 25px;
   flex-wrap: wrap;
+  gap: 0; /* 原本的 gap: 25px 移除 */
+  margin-bottom: 32px; /* 👉 控制表單與下方按鈕之間的距離 */
 }
 
 .form-col {
-  flex: 1 1 45%;
+  flex: 1 1 0;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  row-gap: 18px;
+}
+
+/* 左欄靠右留間距，中間距離 */
+.form-col:first-child {
+  padding-right: 24px; /* ✅ 控制中間間距（你想要留的） */
+}
+
+/* 右欄緊貼右邊界（不要多留） */
+.form-col:last-child {
+  padding-left: 0; /* ✅ 取消右邊多出來的空間 */
 }
 
 label {
@@ -155,7 +173,7 @@ textarea {
 
 .submit-btn {
   font-family: 'LXGW WenKai TC', sans-serif;
-  margin: 10px auto 0;
+  margin: 0px auto 0; /* ✅ 可依需求增減與表單距離 */
   padding: 14px 40px;
   font-size: 16px;
   border-radius: 40px;
@@ -201,3 +219,8 @@ textarea {
   display: none;
 }
 
+.submit-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 2px;
+}

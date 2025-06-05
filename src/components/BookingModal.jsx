@@ -1,3 +1,4 @@
+// BookingModal.jsx
 import React, { useEffect, useRef, useState } from 'react';
 import '../styles/BookingModal.css';
 import { gsap } from 'gsap';
@@ -19,13 +20,13 @@ function BookingModal({ isOpen, onClose, preSelectedTreatment }) {
 
     // 預設療程處理
     // 修正後的版本：只有在有預設值且 modal 是打開的狀況才套用
-useEffect(() => {
-    if (preSelectedTreatment && isOpen) {
-        setSelectedTreatment(preSelectedTreatment);
-    } else if (isOpen) {
-        setSelectedTreatment('');
-    }
-}, [preSelectedTreatment, isOpen]);
+    useEffect(() => {
+        if (preSelectedTreatment && isOpen) {
+            setSelectedTreatment(preSelectedTreatment);
+        } else if (isOpen) {
+            setSelectedTreatment('');
+        }
+    }, [preSelectedTreatment, isOpen]);
 
 
     // 處理動畫開關
@@ -152,11 +153,11 @@ useEffect(() => {
                         <label>任何個人偏好或需求</label>
                         <textarea placeholder="請輸入您的留言" />
                     </div>
-
-                    <button type="submit" className="submit-btn">我要預約</button>
                 </form>
-
-                <SuccessModal isOpen={isSuccessOpen} onClose={() => setIsSuccessOpen(false)} />
+                {/* ✅ 按鈕移出 form，放在 form 外 */}
+                <div className="submit-wrapper">
+                    <button type="submit" className="submit-btn">我要預約</button>
+                </div>
             </div>
         </div>
     );
