@@ -104,8 +104,10 @@ function FooterSection({ onReserveClick }) {
       </div>
 
       <div className="footer-copyright" ref={footerRef}>
-        © 2025 Awella Spa. All Rights Reserved.
+        <span className="footer-copyright-en">© 2025 Awella Spa. All Rights Reserved.</span>
+        <span className="footer-disclaimer">　此網站設計為學生練習作品，無任何商業營利用途。</span>
       </div>
+
     </section>
   );
 }

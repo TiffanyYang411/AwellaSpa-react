@@ -127,12 +127,32 @@
 
 /* 底部版權區 */
 .footer-copyright {
-    position: absolute;
-    bottom: 20px;
-    font-size: 18px;
-    color: #ffffff;
-    font-family: var(--font-en);
-    opacity: 0;
-    text-align: center;
-    width: 100%;
+  position: absolute;
+  bottom: 20px;
+  font-size: 16px;
+  color: #ffffff;
+  font-family: var(--font-zh); /* ✅ 統一用中文字體 */
+  opacity: 0;
+  text-align: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2px;
 }
+
+.footer-copyright-en {
+  font-family: var(--font-en);
+  letter-spacing: 1px;
+  vertical-align: baseline;
+}
+
+.footer-disclaimer {
+  font-family: var(--font-zh);
+  letter-spacing: 1.5px;
+  font-size: 14px;
+  position: relative;
+  top: 1px; /* ✅ 向下微調對齊 baseline，1~3px 可視實際微調 */
+}
+
+
